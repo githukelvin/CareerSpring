@@ -44,6 +44,7 @@ export default {
                 600: '#b60c0c',
                 100: '#212121'
             },
+            'gray':'#E5E5E5'
         },
         extend: {
             fontFamily: {
