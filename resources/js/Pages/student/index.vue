@@ -1,6 +1,6 @@
 
 <script setup>
-import {Head} from "@inertiajs/vue3";
+import {Head,Link} from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import UploadImage from "@/Pages/student/partials/UploadImage.vue";
 import PersonalInformationComponent from "@/Pages/student/partials/PersonalInformationComponent.vue";
@@ -52,15 +52,22 @@ const routeobject =[
            <h1 class="font-[semibold] text-xl ">Dashboard</h1>
            <div class="flex flex-col gap-10">
                <div class="grid lg:grid-cols-3 gap-6">
-                   <div>
-                       completed
+                   <div class="p-4 bg-white flex flex-row justify-between">
+                       <div>
+                           <p class="font-[semibold]">Application Status</p>
+                           <h1 class="text-primary-400 text-2xl py-6 font-[bold] ">Completed</h1>
+                       </div>
+
                    </div>
-                   <div>
-                       70% completed
+                   <div class="p-4 flex flex-col gap-4  bg-white">
+                       <p class="font-[semibold]">Attachment Progress</p>
+                       <h1 class="text-2xl text-black-200 font-[bold] ">70% Completed</h1>
+                       <input class="appearance-none" type="range" name="range" id="range" min="0" value="70" max="100">
                    </div>
-                   <div>
-                       week 8
-                       <Link>Add new Entry</Link>
+                   <div class="bg-white p-4 flex flex-col gap-4 ">
+                      <p class="font-medium">Weekly Logbook</p>
+                       <h1 class="text-2xl text-black-200 font-[bold]">Week 8</h1>
+                       <Link class="font-[medium]] text-xl text-accent-200">Add New Entry</Link>
                    </div>
                </div>
                <div>
