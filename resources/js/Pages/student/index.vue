@@ -6,6 +6,14 @@ import UploadImage from "@/Pages/student/partials/UploadImage.vue";
 import PersonalInformationComponent from "@/Pages/student/partials/PersonalInformationComponent.vue";
 import TrainingInstituionComponent from "@/Pages/student/partials/TrainingInstituionComponent.vue";
 import AttachmentInformationComponent from "@/Pages/student/partials/AttachmentInformationComponent.vue";
+import {computed, ref} from "vue";
+
+
+const value = ref(50)
+
+const rangeStyle = computed(() => ({
+    background: `linear-gradient(to right, green 0%, green ${value.value}%, #e5e7eb ${value.value}%, #e5e7eb 100%)`
+}))
 
 const routeobject =[
     {
@@ -61,11 +69,21 @@ const routeobject =[
                    </div>
                    <div class="p-4 flex flex-col gap-4  bg-white">
                        <p class="font-[semibold]">Attachment Progress</p>
-                       <h1 class="text-2xl text-black-200 font-[bold] ">70% Completed</h1>
-                       <input class="appearance-none" type="range" name="range" id="range" min="0" value="70" max="100">
+                       <h1 class="text-2xl text-black-200 font-[bold] ">{{ value }}% Completed</h1>
+                       <input
+                           type="range"
+                           name="range"
+                           id="range"
+                           min="0"
+                           max="100"
+                           :value="value"
+                           class="w-full h-3 bg-gray-200  appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-moz-range-thumb]:appearance-none"
+                           :style="rangeStyle"
+                       >
+
                    </div>
                    <div class="bg-white p-4 flex flex-col gap-4 ">
-                      <p class="font-medium">Weekly Logbook</p>
+                      <p class="font-[bold]">Weekly Logbook</p>
                        <h1 class="text-2xl text-black-200 font-[bold]">Week 8</h1>
                        <Link class="font-[medium]] text-xl text-accent-200">Add New Entry</Link>
                    </div>
