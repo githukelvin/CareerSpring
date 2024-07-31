@@ -23,7 +23,7 @@ const form = useForm({
 
 <template>
     <div class="bg-white px-8 py-6">
-        <h1>Training Institution</h1>
+        <h1 class="font-[semibold] text-sm text-black-200 py-2">Training Institution</h1>
         <form class="flex flex-col gap-5" action="" method="post">
             <div class="flex flex-row gap-3 w-full">
                 <InputLabel for="nameFacultyDean" value="Name of Faculty Dean:"/>

@@ -29,10 +29,10 @@ const form = useForm({
 
 <template>
 <div class="bg-white px-8 py-6">
-    <h1>Personal Information</h1>
+    <h1 class="font-[semibold] text-sm text-black-200 py-2">Personal Information</h1>
     <form class="flex flex-col gap-3" action="" method="post">
         <div class="grid grid-cols-2 gap-6">
-            <div class="flex flex-row gap-3 w-full">
+            <div class="flex flex-row  w-full">
                 <InputLabel for="lastName" value="Last Name:"/>
 
                 <TextInput
@@ -47,7 +47,7 @@ const form = useForm({
 
                 <InputError :message="form.errors.lastName" class="mt-2"/>
             </div>
-            <div class="flex flex-row gap-3 w-full">
+            <div class="flex flex-row  w-full">
                 <InputLabel for="otherNames" value="Other names:"/>
 
                 <TextInput

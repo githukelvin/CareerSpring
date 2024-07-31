@@ -1,17 +1,25 @@
 <script setup>
 
-import { Link } from '@inertiajs/vue3';
+import {Link, usePage} from '@inertiajs/vue3';
 import LogoIcon from "@/Components/icons/LogoIcon.vue";
+import {computed} from "vue";
 const props = defineProps({
     navLinks: {
         type: [Array, String],
         required: true,
     }
 });
+
+
+const currentUrl = computed(() => usePage().url)
+
+const isActive = (url) => {
+    return url === currentUrl.value
+}
 </script>
 
 <template>
-    <div>
+    <div class="relative">
         <div class="bg-white w-vw">
             <header class="flex flex-row justify-between items-center  py-4 px-3">
                 <div>
@@ -36,7 +44,7 @@ const props = defineProps({
                     <ul >
                         <li v-for="route of navLinks" :key="route.Name" >
 <!--                            <{{route.icon}}/>-->
-                            <Link class="text-base " :href="route.routeName">  {{route.Name}} </Link>
+                            <Link class="text-base "  :href="route.routeName"  :class="{ 'active': isActive(route.routeName) }">   {{route.Name}} </Link>
                         </li>
                     </ul>
                 </nav>
@@ -47,3 +55,10 @@ const props = defineProps({
         </div>
     </div>
 </template>
+
+
+<style>
+.active{
+    @apply text-accent-200 font-[semibold] text-[1.25em];
+}
+</style>

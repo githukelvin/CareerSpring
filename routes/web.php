@@ -11,6 +11,18 @@ Route::get('/', function () {
 Route::get('/student', function () {
     return Inertia::render('student/index');
 });
+Route::get('/student/attachment', function () {
+    return Inertia::render('student/AttachmentDetails');
+});
+Route::get('/student/logging', function () {
+    return Inertia::render('student/logging');
+});
+Route::get('/student/assess', function () {
+    return Inertia::render('student/assessment');
+});
+Route::get('/student/documents', function () {
+    return Inertia::render('student/documents');
+});
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

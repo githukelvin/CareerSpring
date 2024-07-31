@@ -25,7 +25,7 @@ const  form = useForm({
 <template>
 
     <div class="bg-white px-8 py-6">
-        <h1>Details of Attachment place</h1>
+        <h1 class="font-[semibold] text-sm text-black-200 py-2">Details of Attachment place</h1>
         <form class="flex flex-col gap-5" action="" method="post">
             <div class="flex flex-row gap-3 w-full">
                 <InputLabel for="nameOrganization" value="Name of Organization:"/>

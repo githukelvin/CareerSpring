@@ -12,7 +12,7 @@ const form = useForm({
 
 <template>
     <div class="bg-white px-6 ">
-        <h1 class="py-2">User Profile</h1>
+        <h1 class="font-[semibold] text-sm text-black-200 py-2">User Profile</h1>
         <form class="grid place-items-center" >
             <img class="rounded-full mt-8 w-[200px]" src="https://randomuser.me/api/portraits/men/5.jpg" alt="avatar">
             <div class="relative w-fit  py-16">
