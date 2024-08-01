@@ -3,6 +3,18 @@
     <AuthenticatedLayout :nav-links="routeobject">
         <div class="px-8 pt-4 ">
             <h1 class="font-[semibold] text-xl ">Analytics</h1>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white py-3 px-4 ">
+                    <ColumnChart/>
+                </div>
+                <div class="bg-white py-3 px-4 ">
+                    <DonutComponent/>
+                </div>
+                <div class="bg-white py-3 px-4 ">
+                    <LineChart/>
+
+                </div>
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
@@ -36,6 +48,14 @@ const routeobject =[
     ,
 
 ]
+
+import { ref } from 'vue';
+import VueApexCharts from 'vue3-apexcharts';
+import ColumnChart from "@/Pages/coordinator/partials/ColumnChart.vue";
+import DonutComponent from "@/Pages/coordinator/partials/DonutComponent.vue";
+import LineChart from "@/Pages/coordinator/partials/LineChart.vue";
+
+
 
 </script>
 
