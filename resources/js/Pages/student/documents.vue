@@ -10,29 +10,29 @@ const routeobject =[
     },
     {
         'Name':'Attachment Details',
-        'routeName':'attachment',
+        'routeName':'/student/attachment',
         'icon':'LogoIcon',
     },
     {
         'Name':'Logging',
-        'routeName':'logging',
+        'routeName':'/student/logging',
         'icon':'LogoIcon',
     },
     {
         'Name':'Assessments',
-        'routeName':'assess',
+        'routeName':'/student/assess',
         'icon':'LogoIcon',
     }
     ,
     {
         'Name':'Documents',
-        'routeName':'documents',
+        'routeName':'/student/documents',
         'icon':'LogoIcon',
     }
     ,
     {
         'Name':'Settings',
-        'routeName':'settings',
+        'routeName':'/student/settings',
         'icon':'LogoIcon',
     }
 ]

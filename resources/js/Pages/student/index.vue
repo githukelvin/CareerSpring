@@ -18,34 +18,34 @@ const rangeStyle = computed(() => ({
 const routeobject =[
     {
         'Name':'Dashboard',
-        'routeName':'student/dashboard',
+        'routeName':'/student',
         'icon':'LogoIcon',
     },
     {
         'Name':'Attachment Details',
-        'routeName':'student/attachment',
+        'routeName':'/student/attachment',
         'icon':'LogoIcon',
     },
     {
         'Name':'Logging',
-        'routeName':'student/logging',
+        'routeName':'/student/logging',
         'icon':'LogoIcon',
     },
     {
         'Name':'Assessments',
-        'routeName':'student/assess',
+        'routeName':'/student/assess',
         'icon':'LogoIcon',
     }
     ,
     {
         'Name':'Documents',
-        'routeName':'student/documents',
+        'routeName':'/student/documents',
         'icon':'LogoIcon',
     }
     ,
     {
         'Name':'Settings',
-        'routeName':'student/settings',
+        'routeName':'/student/settings',
         'icon':'LogoIcon',
     }
 ]

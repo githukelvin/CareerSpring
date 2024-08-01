@@ -8,6 +8,24 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Welcome');
 });
+
+//start of coordinator routes
+Route::get('/coordinator', function () {
+    return Inertia::render('coordinator/index');
+});
+
+Route::get('/coordinator/analytics', function () {
+    return Inertia::render('coordinator/Analytics');
+});
+Route::get('/coordinator/allocation', function () {
+    return Inertia::render('coordinator/Allocation');
+});
+Route::get('/coordinator/settings', function () {
+    return Inertia::render('coordinator/settings');
+});
+
+
+//start  student  routes
 Route::get('/student', function () {
     return Inertia::render('student/index');
 });
@@ -23,6 +41,7 @@ Route::get('/student/assess', function () {
 Route::get('/student/documents', function () {
     return Inertia::render('student/documents');
 });
+//end  student  routes
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
