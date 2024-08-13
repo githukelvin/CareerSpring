@@ -82,9 +82,8 @@ const chartOptions = ref({
     title: {
         text: 'Monthly Inflation in Argentina, 2002',
         floating: false,
-        offsetY: 330,
+        offsetY: 0,
         align: 'center',
-        position:'top',
         style: {
             color: '#444'
         }

@@ -3,13 +3,15 @@
     <AuthenticatedLayout :nav-links="routeobject">
         <div class="px-8 pt-4 ">
             <h1 class="font-[semibold] text-xl ">Analytics</h1>
-            <div class="grid grid-cols-2 gap-6">
-                <div class="bg-white py-3 px-4 ">
-                    <ColumnChart/>
-                </div>
-                <div class="bg-white py-3 px-4 ">
-                    <DonutComponent/>
-                </div>
+            <div class="flex flex-col gap-6" >
+               <div class="grid grid-cols-2 gap-6">
+                   <div class="bg-white py-3 px-4 ">
+                       <ColumnChart/>
+                   </div>
+                   <div class="bg-white py-3 px-4 ">
+                       <DonutComponent/>
+                   </div>
+               </div>
                 <div class="bg-white py-3 px-4 ">
                     <LineChart/>
 
@@ -43,6 +45,11 @@ const routeobject =[
     {
         'Name':'Settings',
         'routeName':'/coordinator/settings',
+        'icon':'LogoIcon',
+    },
+    {
+        'Name':'Log Out',
+        'routeName':'/coordinator/logout',
         'icon':'LogoIcon',
     }
     ,

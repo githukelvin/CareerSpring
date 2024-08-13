@@ -6,7 +6,7 @@
 import { ref } from 'vue';
 import VueApexCharts from 'vue3-apexcharts';
 
-const series = [44, 55, 41, 17, 15];
+const series = [44, 90];
 
 const chartOptions = ref({
     chart: {

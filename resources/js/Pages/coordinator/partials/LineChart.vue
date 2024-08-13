@@ -10,7 +10,7 @@ import VueApexCharts from 'vue3-apexcharts';
 
 const series = ref([{
     name: "Desktops",
-    data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+    data: [10, 41, 35, 51, 49, 62, 69, 91, 148,0,1,4]
 }]);
 
 const chartOptions = ref({
@@ -38,7 +38,7 @@ const chartOptions = ref({
         },
     },
     xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'],
     }
 });
 </script>

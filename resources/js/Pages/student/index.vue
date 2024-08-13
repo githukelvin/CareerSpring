@@ -47,6 +47,11 @@ const routeobject =[
         'Name':'Settings',
         'routeName':'/student/settings',
         'icon':'LogoIcon',
+    },
+    {
+        'Name':'Logout',
+        'routeName':'/logout',
+        'icon':'LogoIcon',
     }
 ]
 

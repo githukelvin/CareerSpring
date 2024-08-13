@@ -1,44 +1,101 @@
 <template>
+
     <Head title="Allocations" />
     <AuthenticatedLayout :nav-links="routeobject">
         <div class="px-8 pt-4 ">
-            <h1 class="font-[semibold] text-xl ">Allocations</h1>
+            <h1 class="font-[semibold] text-xl ">Student Supervisor Allocations</h1>
+            <p>Manage and allocate supervisors for students on attachment</p>
+<!--            div:assigned-->
+            <div v-show="success" class="flex my-3 px-4 flex-row justify-between items-center py-4 bg-[rgb(172,207,189)]/70">
+                <p class="text-primary-500">Success! Supervisor allocated to the student.</p>
+
+                <div class="cursor-pointer h-[20px] w-[20px] bg-cross-svg"></div>
+            </div>
+            <!-- div:  filters -->
+            <div class="flex  flex-row justify-between items-center">
+                <div>
+                    <input type="text" name="" placeholder="Type to  search" id="" />
+                </div>
+                <div>
+                    <select name="" id="">
+                        <option value="department">Department</option>
+                        <option value="department">Department</option>
+                        <option value="department">Department</option>
+                    </select>
+                </div>
+            </div>
+            <!-- div:end filter -->
+            <div>
+                <div class="bg-primary-500 w-full py-4 mt-6 tabs">
+                    <button @click="activeTab = 'allocated'"  class="text-[1.125em]  pl-9  text-white font-[medium]" :class="{ active: activeTab === 'allocated' }">
+                        Allocated Supervisors
+                    </button>
+                    <button @click="activeTab = 'pending'" class="text-[1.125em]  pl-9  text-white font-[medium]" :class="{ active: activeTab === 'pending' }">
+                        Pending Allocations
+                    </button>
+                </div>
+
+<!--                Tables-->
+                <div>
+
+
+                    <AllocatedSupervisor @cancel-click="confirm =! confirm" v-if="activeTab === 'allocated'" :allocations="allocatedSupervisors" />
+                    <PendingAllocation v-if="activeTab === 'pending'" :allocations="pendingAllocations" />
+                </div>
+<!--                End Tables-->
+
+            </div>
         </div>
     </AuthenticatedLayout>
+
+    <div v-show="confirm" class="absolute w-svw  modal inset-0 " >
+        <ModalAllocateSupervisor @close-modal="confirm=!confirm"/>
+    </div>
 </template>
 
 <script setup>
 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import {Head} from "@inertiajs/vue3";
+import { Head } from "@inertiajs/vue3";
+import AllocatedSupervisor from "@/Pages/coordinator/partials/AllocatedSupervisor.vue";
+import PendingAllocation from "@/Pages/coordinator/partials/PendingAllocation.vue";
+import {ref} from "vue";
+import ModalAllocateSupervisor from "@/Pages/coordinator/partials/ModalAllocateSupervisor.vue";
 
-const routeobject =[
+const confirm = ref(false)
+
+
+const routeobject = [
     {
-        'Name':'Dashboard',
-        'routeName':'/coordinator',
-        'icon':'LogoIcon',
+        'Name': 'Dashboard',
+        'routeName': '/coordinator',
+        'icon': 'LogoIcon',
     },
     {
-        'Name':'Analytics',
-        'routeName':'/coordinator/analytics',
-        'icon':'LogoIcon',
+        'Name': 'Analytics',
+        'routeName': '/coordinator/analytics',
+        'icon': 'LogoIcon',
     },
     {
-        'Name':'Allocation',
-        'routeName':'/coordinator/allocation',
-        'icon':'LogoIcon',
+        'Name': 'Allocation',
+        'routeName': '/coordinator/allocation',
+        'icon': 'LogoIcon',
     },
     {
-        'Name':'Settings',
-        'routeName':'/coordinator/settings',
-        'icon':'LogoIcon',
+        'Name': 'Settings',
+        'routeName': '/coordinator/settings',
+        'icon': 'LogoIcon',
     }
     ,
 
 ]
-
+const activeTab = ref('allocated')
+const  success = ref(false)
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
+.active{
+    @apply  text-accent-200
+}
 </style>
