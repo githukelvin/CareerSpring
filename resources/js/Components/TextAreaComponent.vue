@@ -4,19 +4,25 @@ const model = defineModel({
     required: true,
 });
 
-const  prop = defineProps({
-    placeholder:{
+const prop = defineProps({
+    placeholder: {
         type: String,
         required: true,
-    }
-})
+    },
+});
 </script>
 
 <template>
-    <textarea name="" v-model="model"
-              ref="textarea" id="" cols="30" rows="5" :placeholder="placeholder"></textarea>
+    <textarea
+        name=""
+        v-model="model"
+        ref="textarea"
+        id=""
+        cols="30"
+        class="w-full"
+        rows="5"
+        :placeholder="placeholder"
+    ></textarea>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

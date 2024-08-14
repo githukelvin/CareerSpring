@@ -10,83 +10,96 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import VueApexCharts from 'vue3-apexcharts';
+import { ref } from "vue";
+import VueApexCharts from "vue3-apexcharts";
 
 const series = ref([
     {
-        name: 'Inflation',
-        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
-    }
+        name: "Inflation",
+        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
+    },
 ]);
 
 const chartOptions = ref({
     chart: {
         height: 350,
-        type: 'bar',
+        type: "bar",
     },
     plotOptions: {
         bar: {
             borderRadius: 0,
             dataLabels: {
-                position: 'top',
+                position: "top",
             },
-        }
+        },
     },
     dataLabels: {
         enabled: true,
         formatter: (val) => `${val}%`,
         offsetY: -20,
         style: {
-            fontSize: '12px',
-            colors: ["#304758"]
-        }
+            fontSize: "12px",
+            colors: ["#304758"],
+        },
     },
     xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        position: 'bottom',
+        categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+        ],
+        position: "bottom",
         axisBorder: {
-            show: false
+            show: false,
         },
         axisTicks: {
-            show: false
+            show: false,
         },
         crosshairs: {
             fill: {
-                type: 'gradient',
+                type: "gradient",
                 gradient: {
-                    colorFrom: '#D8E3F0',
-                    colorTo: '#BED1E6',
+                    colorFrom: "#D8E3F0",
+                    colorTo: "#BED1E6",
                     stops: [0, 100],
                     opacityFrom: 0.4,
                     opacityTo: 0.5,
-                }
-            }
+                },
+            },
         },
         tooltip: {
             enabled: true,
-        }
+        },
     },
     yaxis: {
         axisBorder: {
-            show: false
+            show: false,
         },
         axisTicks: {
             show: false,
         },
         labels: {
             show: false,
-            formatter: (val) => `${val}%`
-        }
+            formatter: (val) => `${val}%`,
+        },
     },
     title: {
-        text: 'Monthly Inflation in Argentina, 2002',
+        text: "Monthly Inflation in Argentina, 2002",
         floating: false,
         offsetY: 0,
-        align: 'center',
+        align: "center",
         style: {
-            color: '#444'
-        }
-    }
+            color: "#444",
+        },
+    },
 });
 </script>

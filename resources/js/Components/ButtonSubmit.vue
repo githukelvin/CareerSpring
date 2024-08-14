@@ -1,12 +1,13 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-    <button class="bg-accent-200 w-fit cursor-pointer text-black-100 py-2.5 px-6" type="submit" value=""><slot/></button>
-
+    <button
+        class="bg-accent-200 w-fit cursor-pointer text-black-100 py-2.5 px-6"
+        type="submit"
+        value=""
+    >
+        <slot />
+    </button>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

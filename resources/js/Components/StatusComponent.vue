@@ -1,0 +1,33 @@
+<template>
+    <td
+        class="px-6 py-4 whitespace-nowrap text-sm capitalize"
+        :class="statusClass"
+    >
+        {{ status }}
+    </td>
+</template>
+
+<script setup>
+import { computed } from "vue";
+
+const props = defineProps({
+    status: {
+        type: String,
+        required: true,
+    },
+});
+
+const statusClass = computed(() => {
+    const lowercaseStatus = props.status.toLowerCase();
+    if (lowercaseStatus.includes("pending")) {
+        return "text-accent-200";
+    } else if (
+        lowercaseStatus.includes("complete") ||
+        lowercaseStatus.includes("done")
+    ) {
+        return "text-primary-500";
+    } else {
+        return "text-red-600";
+    }
+});
+</script>

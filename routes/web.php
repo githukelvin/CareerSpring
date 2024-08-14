@@ -12,7 +12,15 @@ Route::get('/', function () {
 Route::get('/supervisor', function () {
     return Inertia::render('supervisor/index');
 });
-
+Route::get('/supervisor/allocatedStudents', function () {
+    return Inertia::render('supervisor/AllocatedStudents');
+});
+Route::get('/supervisor/assessmentVisits', function () {
+    return Inertia::render('supervisor/AssessmentVisits');
+});
+Route::get('/supervisor/pendingTasks', function () {
+    return Inertia::render('supervisor/PendingTasks');
+});
 //end of routes  supervisor
 
 //start of coordinator routes

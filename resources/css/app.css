@@ -6,82 +6,82 @@
     .bg-cross-svg {
         background-image: url("data:image/svg+xml,%3Csvg width='20' height='19' viewBox='0 0 20 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='1.70711' y1='1.29289' x2='18.6777' y2='18.2635' stroke='%23141414' stroke-width='2'/%3E%3Cline x1='1.29289' y1='18.2929' x2='18.2635' y2='1.32233' stroke='%23141414' stroke-width='2'/%3E%3C/svg%3E");
         background-size: contain;
-        @apply bg-no-repeat
+        @apply bg-no-repeat;
     }
 
-    .cautionMark{
+    .cautionMark {
         background-image: url("data:image/svg+xml,%3Csvg width='33' height='32' viewBox='0 0 33 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.57202 32C0.811013 32 0.0105547 30.7195 0.811013 29.1722L15.0592 1.16048C15.8596 -0.386828 17.1404 -0.386828 17.9408 1.16048L32.189 29.1722C32.9894 30.7195 32.189 32 30.428 32H2.57202Z' fill='%23FFCE31'/%3E%3Cpath d='M14.3843 13.0179L15.8785 22.8887C16.0386 23.8491 17.266 23.8491 17.426 22.8887L18.8669 13.0179C19.1337 9.17632 14.1175 9.17632 14.3843 13.0179Z' fill='%23231F20'/%3E%3Cpath d='M16.626 29.1323C17.8639 29.1323 18.8673 28.129 18.8673 26.8913C18.8673 25.6537 17.8639 24.6504 16.626 24.6504C15.3882 24.6504 14.3848 25.6537 14.3848 26.8913C14.3848 28.129 15.3882 29.1323 16.626 29.1323Z' fill='%23231F20'/%3E%3C/svg%3E");
         background-repeat: no-repeat no-repeat;
         background-position: center center;
         background-size: cover;
     }
-    .centermodal{
+    .centermodal {
         left: 50%;
         top: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
     }
 }
-@layer base{
+@layer base {
     @font-face {
         font-display: swap;
-        font-family: 'medium';
+        font-family: "medium";
         font-style: normal;
         font-weight: 500;
-        src: url('../fonts/work-sans-v19-latin-500.woff2') format('woff2');
+        src: url("../fonts/work-sans-v19-latin-500.woff2") format("woff2");
     }
 
     @font-face {
         font-display: swap;
-        font-family: 'semibold';
+        font-family: "semibold";
         font-style: normal;
         font-weight: 600;
-        src: url('../fonts/work-sans-v19-latin-600.woff2') format('woff2');
+        src: url("../fonts/work-sans-v19-latin-600.woff2") format("woff2");
     }
 
     @font-face {
         font-display: swap;
-        font-family: 'bold';
+        font-family: "bold";
         font-style: normal;
         font-weight: 700;
-        src: url('../fonts/work-sans-v19-latin-700.woff2') format('woff2');
+        src: url("../fonts/work-sans-v19-latin-700.woff2") format("woff2");
     }
 
     @font-face {
         font-display: swap;
-        font-family: 'extrabold';
+        font-family: "extrabold";
         font-style: normal;
         font-weight: 800;
-        src: url('../fonts/work-sans-v19-latin-800.woff2') format('woff2');
+        src: url("../fonts/work-sans-v19-latin-800.woff2") format("woff2");
     }
 
     @font-face {
         font-display: swap;
-        font-family: 'exbold';
+        font-family: "exbold";
         font-style: normal;
         font-weight: 900;
-        src: url('../fonts/work-sans-v19-latin-900.woff2') format('woff2');
+        src: url("../fonts/work-sans-v19-latin-900.woff2") format("woff2");
     }
 
     @font-face {
         font-display: swap;
-        font-family: 'regular';
+        font-family: "regular";
         font-style: normal;
         font-weight: 400;
-        src: url('../fonts/work-sans-v19-latin-regular.woff2') format('woff2');
+        src: url("../fonts/work-sans-v19-latin-regular.woff2") format("woff2");
     }
-
 }
 
-
-.header{
-    background-image:
-        linear-gradient(rgba(16, 16, 16, 0.65), rgba(16, 16, 16, 0.65)),
+.header {
+    background-image: linear-gradient(
+            rgba(16, 16, 16, 0.65),
+            rgba(16, 16, 16, 0.65)
+        ),
         url("../images/bg-hero.png");
     background-repeat: no-repeat;
     background-size: cover;
     /*background-position: top;*/
 }
 
-nav ul li a{
+nav ul li a {
     @apply text-white font-[medium] text-[1.25em];
 }

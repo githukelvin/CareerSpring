@@ -1,34 +1,37 @@
 <script setup>
-
 import ButtonSubmit from "@/Components/ButtonSubmit.vue";
-import {useForm} from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 
-const  form = useForm({
-    nameOrganization:"",
-    physicalAddress:"",
-    postalAddress:"",
-    telNo:"",
-    email:"",
-    department:"",
-    nameOfHead:"",
-    telNoHead:"",
-    supervisorName:"",
-    telNoSupervisor:"",
-    designation:"",
-    signature:"",
-})
+const form = useForm({
+    nameOrganization: "",
+    physicalAddress: "",
+    postalAddress: "",
+    telNo: "",
+    email: "",
+    department: "",
+    nameOfHead: "",
+    telNoHead: "",
+    supervisorName: "",
+    telNoSupervisor: "",
+    designation: "",
+    signature: "",
+});
 </script>
 
 <template>
-
     <div class="bg-white px-8 py-6">
-        <h1 class="font-[semibold] text-sm text-black-200 py-2">Details of Attachment place</h1>
+        <h1 class="font-[semibold] text-sm text-black-200 py-2">
+            Details of Attachment place
+        </h1>
         <form class="flex flex-col gap-5" action="" method="post">
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="nameOrganization" value="Name of Organization:"/>
+                <InputLabel
+                    for="nameOrganization"
+                    value="Name of Organization:"
+                />
 
                 <TextInput
                     id="nameOrganization"
@@ -40,10 +43,13 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameOrganization" class="mt-2"/>
+                <InputError
+                    :message="form.errors.nameOrganization"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="physicalAddress" value="Physical Address:"/>
+                <InputLabel for="physicalAddress" value="Physical Address:" />
 
                 <TextInput
                     id="physicalAddress"
@@ -55,10 +61,13 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.physicalAddress" class="mt-2"/>
+                <InputError
+                    :message="form.errors.physicalAddress"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="postalAddress" value="Postal Address:"/>
+                <InputLabel for="postalAddress" value="Postal Address:" />
 
                 <TextInput
                     id="postalAddress"
@@ -70,10 +79,10 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.postalAddress" class="mt-2"/>
+                <InputError :message="form.errors.postalAddress" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="telNo" value="Tel No:"/>
+                <InputLabel for="telNo" value="Tel No:" />
 
                 <TextInput
                     id="telNo"
@@ -85,11 +94,11 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.telNo" class="mt-2"/>
+                <InputError :message="form.errors.telNo" class="mt-2" />
             </div>
 
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="email" value="Organization Email:"/>
+                <InputLabel for="email" value="Organization Email:" />
 
                 <TextInput
                     id="email"
@@ -101,10 +110,10 @@ const  form = useForm({
                     type="email"
                 />
 
-                <InputError :message="form.errors.email" class="mt-2"/>
+                <InputError :message="form.errors.email" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="department" value="Department Attached:"/>
+                <InputLabel for="department" value="Department Attached:" />
 
                 <TextInput
                     id="department"
@@ -116,10 +125,10 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.department" class="mt-2"/>
+                <InputError :message="form.errors.department" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="nameOfHead" value="Name of Head:"/>
+                <InputLabel for="nameOfHead" value="Name of Head:" />
 
                 <TextInput
                     id="nameOfHead"
@@ -131,11 +140,11 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameOfHead" class="mt-2"/>
+                <InputError :message="form.errors.nameOfHead" class="mt-2" />
             </div>
 
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="telNoHead" value="Head Tel No:"/>
+                <InputLabel for="telNoHead" value="Head Tel No:" />
 
                 <TextInput
                     id="telNoHead"
@@ -147,10 +156,10 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.telNoHead" class="mt-2"/>
+                <InputError :message="form.errors.telNoHead" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="supervisorName" value="Supervisor`s Name:"/>
+                <InputLabel for="supervisorName" value="Supervisor`s Name:" />
 
                 <TextInput
                     id="supervisorName"
@@ -162,10 +171,13 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.supervisorName" class="mt-2"/>
+                <InputError
+                    :message="form.errors.supervisorName"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="telNoSupervisor" value="Supervisor Tel No:"/>
+                <InputLabel for="telNoSupervisor" value="Supervisor Tel No:" />
 
                 <TextInput
                     id="telNoSupervisor"
@@ -177,11 +189,14 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.telNoSupervisor" class="mt-2"/>
+                <InputError
+                    :message="form.errors.telNoSupervisor"
+                    class="mt-2"
+                />
             </div>
 
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="designation" value="Designation:"/>
+                <InputLabel for="designation" value="Designation:" />
 
                 <TextInput
                     id="designation"
@@ -193,10 +208,10 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.designation" class="mt-2"/>
+                <InputError :message="form.errors.designation" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="signature" value="Signature:"/>
+                <InputLabel for="signature" value="Signature:" />
 
                 <TextInput
                     id="signature"
@@ -208,18 +223,14 @@ const  form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.signature" class="mt-2"/>
+                <InputError :message="form.errors.signature" class="mt-2" />
             </div>
-<!--            div actions-->
+            <!--            div actions-->
             <div>
-                <button-submit>
-                    save
-                </button-submit>
+                <button-submit> save </button-submit>
             </div>
         </form>
     </div>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

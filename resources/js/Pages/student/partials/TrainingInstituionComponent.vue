@@ -1,32 +1,37 @@
 <script setup>
-import {useForm} from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import ButtonSubmit from "@/Components/ButtonSubmit.vue";
 
 const form = useForm({
-    nameFacultyDean: '',
-    nameFaculty: '',
-    contact: '',
-    telNo: '',
-    nameSchool: '',
-    nameDirector: '',
-    telNoDirector: '',
-    emailDirector: '',
-    nameDepartment: '',
-    nameChairperson: '',
-    telNoChairperson: '',
-    emailChairperson: '',
-})
+    nameFacultyDean: "",
+    nameFaculty: "",
+    contact: "",
+    telNo: "",
+    nameSchool: "",
+    nameDirector: "",
+    telNoDirector: "",
+    emailDirector: "",
+    nameDepartment: "",
+    nameChairperson: "",
+    telNoChairperson: "",
+    emailChairperson: "",
+});
 </script>
 
 <template>
     <div class="bg-white px-8 py-6">
-        <h1 class="font-[semibold] text-sm text-black-200 py-2">Training Institution</h1>
+        <h1 class="font-[semibold] text-sm text-black-200 py-2">
+            Training Institution
+        </h1>
         <form class="flex flex-col gap-5" action="" method="post">
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="nameFacultyDean" value="Name of Faculty Dean:"/>
+                <InputLabel
+                    for="nameFacultyDean"
+                    value="Name of Faculty Dean:"
+                />
 
                 <TextInput
                     id="nameFacultyDean"
@@ -38,10 +43,13 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameFacultyDean" class="mt-2"/>
+                <InputError
+                    :message="form.errors.nameFacultyDean"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="nameFaculty" value="Name of Faculty:"/>
+                <InputLabel for="nameFaculty" value="Name of Faculty:" />
 
                 <TextInput
                     id="nameFaculty"
@@ -53,10 +61,10 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameFaculty" class="mt-2"/>
+                <InputError :message="form.errors.nameFaculty" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="contact" value="Contact  Address:"/>
+                <InputLabel for="contact" value="Contact  Address:" />
 
                 <TextInput
                     id="contact"
@@ -68,10 +76,10 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.contact" class="mt-2"/>
+                <InputError :message="form.errors.contact" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="telNo" value="Tel No:"/>
+                <InputLabel for="telNo" value="Tel No:" />
 
                 <TextInput
                     id="telNo"
@@ -83,10 +91,10 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.telNo" class="mt-2"/>
+                <InputError :message="form.errors.telNo" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="nameSchool" value="Name od School:"/>
+                <InputLabel for="nameSchool" value="Name od School:" />
 
                 <TextInput
                     id="nameSchool"
@@ -98,10 +106,10 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameSchool" class="mt-2"/>
+                <InputError :message="form.errors.nameSchool" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="nameDirector" value="Name of Director:"/>
+                <InputLabel for="nameDirector" value="Name of Director:" />
 
                 <TextInput
                     id="nameDirector"
@@ -113,10 +121,10 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameDirector" class="mt-2"/>
+                <InputError :message="form.errors.nameDirector" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="telNoDirector" value="Tel No:"/>
+                <InputLabel for="telNoDirector" value="Tel No:" />
 
                 <TextInput
                     id="telNoDirector"
@@ -128,10 +136,10 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.telNoDirector" class="mt-2"/>
+                <InputError :message="form.errors.telNoDirector" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="emailDirector" value="Email:"/>
+                <InputLabel for="emailDirector" value="Email:" />
 
                 <TextInput
                     id="emailDirector"
@@ -143,10 +151,10 @@ const form = useForm({
                     type="email"
                 />
 
-                <InputError :message="form.errors.emailDirector" class="mt-2"/>
+                <InputError :message="form.errors.emailDirector" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="nameDepartment" value="Name of Department:"/>
+                <InputLabel for="nameDepartment" value="Name of Department:" />
 
                 <TextInput
                     id="nameDepartment"
@@ -158,10 +166,16 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameDepartment" class="mt-2"/>
+                <InputError
+                    :message="form.errors.nameDepartment"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="nameChairperson" value="Name of Chairperson:"/>
+                <InputLabel
+                    for="nameChairperson"
+                    value="Name of Chairperson:"
+                />
 
                 <TextInput
                     id="nameChairperson"
@@ -173,10 +187,13 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameChairperson" class="mt-2"/>
+                <InputError
+                    :message="form.errors.nameChairperson"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="telNoChairperson" value="Tel No:"/>
+                <InputLabel for="telNoChairperson" value="Tel No:" />
 
                 <TextInput
                     id="telNoChairperson"
@@ -188,10 +205,13 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.telNoChairperson" class="mt-2"/>
+                <InputError
+                    :message="form.errors.telNoChairperson"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
-                <InputLabel for="emailChairperson" value="Last Name:"/>
+                <InputLabel for="emailChairperson" value="Last Name:" />
 
                 <TextInput
                     id="emailChairperson"
@@ -203,19 +223,17 @@ const form = useForm({
                     type="email"
                 />
 
-                <InputError :message="form.errors.emailChairperson" class="mt-2"/>
+                <InputError
+                    :message="form.errors.emailChairperson"
+                    class="mt-2"
+                />
             </div>
-<!--            div  actions-->
+            <!--            div  actions-->
             <div>
-                <button-submit>
-                    Save
-                </button-submit>
+                <button-submit> Save </button-submit>
             </div>
         </form>
     </div>
-
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
