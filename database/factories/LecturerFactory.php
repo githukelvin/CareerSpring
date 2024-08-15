@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Lecturer;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Lecturer>
+ * @extends Factory<Lecturer>
  */
 class LecturerFactory extends Factory
 {
@@ -17,7 +19,8 @@ class LecturerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => User::factory()->create(['role' => 'Lecturer'])->id,
+
         ];
     }
 }

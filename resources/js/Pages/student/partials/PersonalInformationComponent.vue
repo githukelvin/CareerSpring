@@ -6,8 +6,6 @@ import { useForm } from "@inertiajs/vue3";
 import ButtonSubmit from "@/Components/ButtonSubmit.vue";
 
 const form = useForm({
-    lastName: "",
-    otherNames: "",
     adminNo: "",
     gender: "",
     idNo: "",
@@ -30,41 +28,8 @@ const form = useForm({
         <h1 class="font-[semibold] text-sm text-black-200 py-2">
             Personal Information
         </h1>
-        <form class="flex flex-col gap-3" action="" method="post">
+        <form action="" class="flex flex-col gap-3" method="post">
             <div class="grid grid-cols-2 gap-6">
-                <div class="flex flex-row w-full">
-                    <InputLabel for="lastName" value="Last Name:" />
-
-                    <TextInput
-                        id="lastName"
-                        v-model="form.lastName"
-                        autocomplete="lastname"
-                        autofocus
-                        class="mt-1 block w-full"
-                        required
-                        type="text"
-                    />
-
-                    <InputError :message="form.errors.lastName" class="mt-2" />
-                </div>
-                <div class="flex flex-row w-full">
-                    <InputLabel for="otherNames" value="Other names:" />
-
-                    <TextInput
-                        id="otherNames"
-                        v-model="form.otherNames"
-                        autocomplete="lastname"
-                        autofocus
-                        class="mt-1 block w-full"
-                        required
-                        type="text"
-                    />
-
-                    <InputError
-                        :message="form.errors.otherNames"
-                        class="mt-2"
-                    />
-                </div>
                 <div class="flex flex-row gap-3 w-full">
                     <InputLabel for="adminNo" value="Admin No:" />
 
@@ -85,20 +50,20 @@ const form = useForm({
 
                     <div class="flex flex-row gap-2 items-center">
                         <input
-                            type="radio"
-                            name="gender"
-                            v-model="form.gender"
                             id="gender"
+                            v-model="form.gender"
+                            name="gender"
+                            type="radio"
                         />
 
                         Female
                     </div>
                     <div class="flex flex-row gap-2 items-center">
                         <input
-                            type="radio"
-                            name="gender"
-                            v-model="form.gender"
                             id="gender"
+                            v-model="form.gender"
+                            name="gender"
+                            type="radio"
                         />
                         Male
                     </div>
@@ -305,7 +270,7 @@ const form = useForm({
             </div>
             <!--        Div action-->
             <div class="flex flex-row gap-6">
-                <button-submit> Save </button-submit>
+                <button-submit> Save</button-submit>
                 <button
                     class="text-black-100 px-5 py-2 border border-accent-200"
                 >
@@ -316,4 +281,4 @@ const form = useForm({
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

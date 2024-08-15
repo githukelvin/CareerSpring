@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Director;
 use Illuminate\Database\Seeder;
 
 class DirectorSeeder extends Seeder
@@ -12,6 +12,8 @@ class DirectorSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Director::factory()
+            ->count(3)
+            ->create();
     }
 }

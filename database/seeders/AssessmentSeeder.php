@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Assessment;
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 
 class AssessmentSeeder extends Seeder
@@ -12,6 +13,11 @@ class AssessmentSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Student::all()->each(function ($student) {
+            Assessment::factory()->create([
+                'student_id' => $student->student_id
+            ]);
+        });
+
     }
 }

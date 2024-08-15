@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\AttachmentPlace;
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 
 class AttachmentPlaceSeeder extends Seeder
@@ -12,6 +13,10 @@ class AttachmentPlaceSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Student::all()->each(function ($student) {
+            AttachmentPlace::factory()->create([
+                'student_id' => $student->student_id
+            ]);
+        });
     }
 }

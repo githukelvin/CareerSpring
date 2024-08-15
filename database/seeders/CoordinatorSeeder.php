@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Coordinator;
 use Illuminate\Database\Seeder;
 
 class CoordinatorSeeder extends Seeder
@@ -12,6 +12,8 @@ class CoordinatorSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Coordinator::factory()
+            ->count(2)
+            ->create();
     }
 }

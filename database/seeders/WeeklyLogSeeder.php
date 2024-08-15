@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Student;
+use App\Models\WeeklyLog;
 use Illuminate\Database\Seeder;
 
 class WeeklyLogSeeder extends Seeder
@@ -12,6 +13,13 @@ class WeeklyLogSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Student::all()->each(function ($student) {
+            for ($week = 1; $week <= 12; $week++) {
+                WeeklyLog::factory()->create([
+                    'student_id' => $student->student_id,
+                    'week_number' => $week,
+                ]);
+            }
+        });
     }
 }

@@ -4,17 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_director')->nullable()->default(false);
-            $table->boolean('is_supervisor')->nullable()->default(false);
-            $table->boolean('is_coordinator')->nullable()->default(false);
+            $table->string('role');
         });
     }
 

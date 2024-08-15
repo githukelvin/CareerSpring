@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Student;
+use App\Models\TrainingInstitution;
 use Illuminate\Database\Seeder;
 
 class TrainingInstitutionSeeder extends Seeder
@@ -12,6 +13,10 @@ class TrainingInstitutionSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Student::all()->each(function ($student) {
+            TrainingInstitution::factory()->create([
+                'student_id' => $student->student_id
+            ]);
+        });
     }
 }

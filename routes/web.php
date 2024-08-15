@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,6 +22,18 @@ Route::get('/supervisor/pendingTasks', function () {
 });
 //end of routes  supervisor
 
+//Routes  Director
+Route::get('/director', function () {
+    return Inertia::render('director/index');
+});
+Route::get('/director/approval', function () {
+    return Inertia::render('director/Approval');
+});
+Route::get('/director/students', function () {
+    return Inertia::render('director/StudentManagement');
+});
+//end  rule  director
+
 //start of coordinator routes
 Route::get('/coordinator', function () {
     return Inertia::render('coordinator/index');
@@ -43,7 +54,7 @@ Route::get('/coordinator/settings', function () {
 //    return Inertia::render('Dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth','verified')->group(function (){
+Route::middleware('auth', 'verified')->group(function () {
 
 //start  student  routes
     Route::get('/student', function () {
@@ -77,4 +88,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
