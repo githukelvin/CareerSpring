@@ -7,15 +7,15 @@
                 <div class="flex flex-row justify-between">
                     <div>
                         <input
-                            type="text"
+                            id=""
                             name=""
                             placeholder="Type  here to Search"
-                            id=""
+                            type="text"
                         />
                     </div>
 
                     <div>
-                        <select name="" id="">
+                        <select id="" name="">
                             <option value="">Status</option>
                             <option value="">Status</option>
                             <option value="">Status</option>
@@ -36,38 +36,38 @@
                                             <thead class="bg-neutral-900">
                                                 <tr>
                                                     <th
-                                                        scope="col"
                                                         class="px-6 py-3 text-start text-xs font-[semibold] text-black-200 uppercase"
+                                                        scope="col"
                                                     >
                                                         Student Name
                                                     </th>
                                                     <th
-                                                        scope="col"
                                                         class="px-6 py-3 text-start text-xs font-[semibold] text-black-200 uppercase"
+                                                        scope="col"
                                                     >
                                                         Department
                                                     </th>
                                                     <th
-                                                        scope="col"
                                                         class="px-6 py-3 text-start text-xs font-[semibold] text-black-200 uppercase"
+                                                        scope="col"
                                                     >
                                                         Start Date
                                                     </th>
                                                     <th
-                                                        scope="col"
                                                         class="px-6 py-3 text-start text-xs font-[semibold] text-black-200 uppercase"
+                                                        scope="col"
                                                     >
                                                         End Date
                                                     </th>
                                                     <th
-                                                        scope="col"
                                                         class="px-6 py-3 text-start text-xs font-[semibold] text-black-200 uppercase"
+                                                        scope="col"
                                                     >
                                                         Assessment Status
                                                     </th>
                                                     <th
-                                                        scope="col"
                                                         class="px-6 py-3 text-center text-xs font-[semibold] text-black-200 uppercase"
+                                                        scope="col"
                                                     >
                                                         Action
                                                     </th>
@@ -104,8 +104,8 @@
                                                         class="px-6 py-4 whitespace-nowrap flex flex-row gap-7 text-end text-sm font-[regular]"
                                                     >
                                                         <button
-                                                            type="button"
                                                             class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-bluish hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
+                                                            type="button"
                                                         >
                                                             View Details
                                                         </button>
@@ -141,8 +141,8 @@
                                                         class="px-6 py-4 whitespace-nowrap flex flex-row gap-7 text-end text-sm font-[regular]"
                                                     >
                                                         <button
-                                                            type="button"
                                                             class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-bluish hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
+                                                            type="button"
                                                         >
                                                             View Details
                                                         </button>
@@ -178,8 +178,8 @@
                                                         class="px-6 py-4 whitespace-nowrap flex flex-row gap-7 text-end text-sm font-[regular]"
                                                     >
                                                         <button
-                                                            type="button"
                                                             class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-bluish hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
+                                                            type="button"
                                                         >
                                                             View Details
                                                         </button>
@@ -215,8 +215,8 @@
                                                         class="px-6 py-4 whitespace-nowrap flex flex-row gap-7 text-end text-sm font-[regular]"
                                                     >
                                                         <button
-                                                            type="button"
                                                             class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-bluish hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
+                                                            type="button"
                                                         >
                                                             View Details
                                                         </button>
@@ -249,6 +249,7 @@ import StatusComponent from "@/Components/StatusComponent.vue";
 import { Head } from "@inertiajs/vue3";
 import AssessmentModal from "@/Components/AssessmentModal.vue";
 import MarkAccessed from "@/Components/MarkAccessed.vue";
+
 const routeobject = [
     {
         Name: "Dashboard",
@@ -268,6 +269,11 @@ const routeobject = [
     {
         Name: "Pending Tasks",
         routeName: "/supervisor/pendingTasks",
+        icon: "LogoIcon",
+    },
+    {
+        Name: "Logout",
+        routeName: "/logout",
         icon: "LogoIcon",
     },
 ];

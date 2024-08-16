@@ -25,6 +25,7 @@ class StudentFactory extends Factory
             'dob' => $this->faker->date('Y-m-d', '-18 years'),
             'course' => $this->faker->randomElement(['Communication and Computer Networks', 'Information Technology', 'Computer Technology']),
             'level' => $this->faker->randomElement(['Degree', 'Diploma']),
+            'approval_status' => $this->faker->randomElement(['Pending', 'Approved', 'Rejected', 'Ready']),
             'year' => $this->faker->numberBetween(1, 4),
             'home_address' => $this->faker->address,
             'tel_no' => $this->faker->phoneNumber,

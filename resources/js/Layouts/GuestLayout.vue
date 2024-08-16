@@ -17,20 +17,19 @@ import LogoIcon from "@/Components/icons/LogoIcon.vue";
                 <nav>
                     <ul class="flex md:flex-row gap-7">
                         <li>
-                            <Link href="/"> Home </Link>
+                            <Link href="/"> Home</Link>
                         </li>
                         <li>
-                            <Link href="/login"> For Students </Link>
+                            <Link href="/login"> Login Here</Link>
                         </li>
                         <li>
-                            <Link href="/company"> For Company </Link>
+                            <Link href="/register"> Register Here</Link>
                         </li>
                         <li>
-                            <Link href="/contact"> Contact </Link>
+                            <Link href="/company"> For Company</Link>
                         </li>
-
                         <li>
-                            <Link href="/register"> Register </Link>
+                            <Link href="/contact"> Contact</Link>
                         </li>
                     </ul>
                 </nav>

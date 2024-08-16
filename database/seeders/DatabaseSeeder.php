@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             TrainingInstitutionSeeder::class,
             AttachmentPlaceSeeder::class,
             AssessmentSeeder::class,
-            WeeklyLogSeeder::class
+//            WeeklyLogSeeder::class,
+            AttachmentSeeder::class,
         ]);
     }
 }

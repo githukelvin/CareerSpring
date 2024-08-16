@@ -73,6 +73,11 @@ const routeobject = [
         routeName: "coordinator/settings",
         icon: "LogoIcon",
     },
+    {
+        Name: "Logout",
+        routeName: "/logout",
+        icon: "LogoIcon",
+    },
 ];
 </script>
 

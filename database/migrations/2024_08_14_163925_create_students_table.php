@@ -20,6 +20,8 @@ return new class extends Migration {
             $table->string('course');
             $table->string('level');
             $table->integer('year');
+            $table->boolean('is_ready_for_assessment')->default(false);
+            $table->enum('approval_status', ['Pending', 'Approved', 'Rejected', 'Ready'])->default('Pending');
             $table->string('home_address');
             $table->string('tel_no');
             $table->integer('progress_level');

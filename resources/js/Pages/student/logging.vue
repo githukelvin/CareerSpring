@@ -5,7 +5,9 @@ import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import TextAreaComponent from "@/Components/TextAreaComponent.vue";
-import ButtonSubmit from "@/Components/ButtonSubmit.vue";
+import FlashMessageComponent from "@/Components/FlashMessageComponent.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+
 const routeobject = [
     {
         Name: "Dashboard",
@@ -39,22 +41,24 @@ const routeobject = [
     },
 ];
 const form = useForm({
-    weekFrom: "",
-    weekTo: "",
-    dateFrom: "",
-    dateTo: "",
+    week_number: "",
+    date_from: "",
+    date_to: "",
     monday: "",
     tuesday: "",
     wednesday: "",
     thursday: "",
     friday: "",
-    remarksbyAttachee: "",
-    nameAttachee: "",
-    dateAttachee: "",
-    remarksSupervisor: "",
-    nameSupervisor: "",
-    dateSupervisor: "",
+    student_remarks: "",
+    supervisor_name: "",
+    supervisor_remarks: "",
 });
+
+const submit = () => {
+    form.post(route("student/logging"), {
+        onFinish: () => form.reset(),
+    });
+};
 </script>
 
 <template>
@@ -64,19 +68,20 @@ const form = useForm({
             <h1 class="font-[semibold] text-black-200 text-[1.25em] pb-4">
                 Logging
             </h1>
+            <FlashMessageComponent />
             <div class="bg-white p-6">
                 <h1 class="font-[medium] text-base text-black-200 py-4">
                     Weekly industrial Attachment Records
                 </h1>
-                <form class="flex flex-col gap-6">
+                <form class="flex flex-col gap-6" @submit.prevent="submit">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="flex flex-row gap-3 w-full">
-                            <InputLabel for="weekFrom" value="Week From:" />
+                            <InputLabel for="weekFrom" value="Week Number:" />
 
                             <TextInput
                                 id="weekFrom"
-                                v-model="form.weekFrom"
-                                autocomplete="weekFrom"
+                                v-model="form.week_number"
+                                autocomplete="week_number"
                                 autofocus
                                 class="mt-1 block w-full"
                                 required
@@ -84,25 +89,7 @@ const form = useForm({
                             />
 
                             <InputError
-                                :message="form.errors.weekFrom"
-                                class="mt-2"
-                            />
-                        </div>
-                        <div class="flex flex-row gap-3 w-full">
-                            <InputLabel for="weekTo" value="Week To:" />
-
-                            <TextInput
-                                id="weekTo"
-                                v-model="form.weekTo"
-                                autocomplete="weekTo"
-                                autofocus
-                                class="mt-1 block w-full"
-                                required
-                                type="text"
-                            />
-
-                            <InputError
-                                :message="form.errors.weekTo"
+                                :message="form.errors.week_number"
                                 class="mt-2"
                             />
                         </div>
@@ -111,7 +98,7 @@ const form = useForm({
 
                             <TextInput
                                 id="dateFrom"
-                                v-model="form.dateFrom"
+                                v-model="form.date_from"
                                 autocomplete="datefrom"
                                 autofocus
                                 class="mt-1 block w-full"
@@ -120,7 +107,7 @@ const form = useForm({
                             />
 
                             <InputError
-                                :message="form.errors.dateFrom"
+                                :message="form.errors.date_from"
                                 class="mt-2"
                             />
                         </div>
@@ -129,7 +116,7 @@ const form = useForm({
 
                             <TextInput
                                 id="dateTo"
-                                v-model="form.dateTo"
+                                v-model="form.date_to"
                                 autocomplete="fullname"
                                 autofocus
                                 class="mt-1 block w-full"
@@ -138,7 +125,7 @@ const form = useForm({
                             />
 
                             <InputError
-                                :message="form.errors.dateTo"
+                                :message="form.errors.date_to"
                                 class="mt-2"
                             />
                         </div>
@@ -150,10 +137,10 @@ const form = useForm({
                             <TextAreaComponent
                                 id="monday"
                                 v-model="form.monday"
-                                placeholder="Enter the work done on this day"
                                 autocomplete="fullname"
                                 autofocus
                                 class="mt-1 block w-full"
+                                placeholder="Enter the work done on this day"
                                 required
                                 type="text"
                             />
@@ -169,10 +156,10 @@ const form = useForm({
                             <TextAreaComponent
                                 id="tuesday"
                                 v-model="form.tuesday"
-                                placeholder="Enter the work done on this day"
                                 autocomplete="fullname"
                                 autofocus
                                 class="mt-1 block w-full"
+                                placeholder="Enter the work done on this day"
                                 required
                                 type="text"
                             />
@@ -188,10 +175,10 @@ const form = useForm({
                             <TextAreaComponent
                                 id="wednesday"
                                 v-model="form.wednesday"
-                                placeholder="Enter the work done on this day"
                                 autocomplete="fullname"
                                 autofocus
                                 class="mt-1 block w-full"
+                                placeholder="Enter the work done on this day"
                                 required
                                 type="text"
                             />
@@ -207,10 +194,10 @@ const form = useForm({
                             <TextAreaComponent
                                 id="thursday"
                                 v-model="form.thursday"
-                                placeholder="Enter the work done on this day"
                                 autocomplete="fullname"
                                 autofocus
                                 class="mt-1 block w-full"
+                                placeholder="Enter the work done on this day"
                                 required
                                 type="text"
                             />
@@ -225,11 +212,11 @@ const form = useForm({
 
                             <TextAreaComponent
                                 id="friday"
-                                placeholder="Enter the work done on this day"
                                 v-model="form.friday"
                                 autocomplete="fullname"
                                 autofocus
                                 class="mt-1 block w-full"
+                                placeholder="Enter the work done on this day"
                                 required
                                 type="text"
                             />
@@ -255,60 +242,60 @@ const form = useForm({
 
                             <TextAreaComponent
                                 id="remarksbyAttachee"
-                                placeholder="Attachee Remarks"
-                                v-model="form.remarksbyAttachee"
+                                v-model="form.student_remarks"
                                 autocomplete="fullname"
                                 autofocus
                                 class="mt-1 block w-full"
+                                placeholder="Attachee Remarks"
                                 required
                                 type="text"
                             />
 
                             <InputError
-                                :message="form.errors.remarksbyAttachee"
+                                :message="form.errors.student_remarks"
                                 class="mt-2"
                             />
                         </div>
-                        <div class="flex flex-row gap-3 py-4">
-                            <div class="flex flex-row gap-3 w-full">
-                                <InputLabel for="nameAttachee" value="Name:" />
+                        <!--                        <div class="flex flex-row gap-3 py-4">-->
+                        <!--                            <div class="flex flex-row gap-3 w-full">-->
+                        <!--                                <InputLabel for="nameAttachee" value="Name:" />-->
 
-                                <TextInput
-                                    id="nameAttachee"
-                                    v-model="form.nameAttachee"
-                                    autocomplete="fullname"
-                                    autofocus
-                                    class="mt-1 block w-full"
-                                    required
-                                    placeholder="Your Name"
-                                    type="text"
-                                />
+                        <!--                                <TextInput-->
+                        <!--                                    id="nameAttachee"-->
+                        <!--                                    v-model="form.nameAttachee"-->
+                        <!--                                    autocomplete="fullname"-->
+                        <!--                                    autofocus-->
+                        <!--                                    class="mt-1 block w-full"-->
+                        <!--                                    placeholder="Your Name"-->
+                        <!--                                    required-->
+                        <!--                                    type="text"-->
+                        <!--                                />-->
 
-                                <InputError
-                                    :message="form.errors.nameAttachee"
-                                    class="mt-2"
-                                />
-                            </div>
-                            <div class="flex flex-row gap-3 w-full">
-                                <InputLabel for="dateAttachee" value="Date:" />
+                        <!--                                <InputError-->
+                        <!--                                    :message="form.errors.nameAttachee"-->
+                        <!--                                    class="mt-2"-->
+                        <!--                                />-->
+                        <!--                            </div>-->
+                        <!--                            &lt;!&ndash;                            <div class="flex flex-row gap-3 w-full">&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                <InputLabel for="dateAttachee" value="Date:" />&ndash;&gt;-->
 
-                                <TextInput
-                                    id="dateAttachee"
-                                    v-model="form.dateAttachee"
-                                    placeholder="Date"
-                                    autocomplete="date"
-                                    autofocus
-                                    class="mt-1 block w-full"
-                                    required
-                                    type="text"
-                                />
+                        <!--                            &lt;!&ndash;                                <TextInput&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    id="dateAttachee"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    v-model="form.dateAttachee"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    autocomplete="date"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    autofocus&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    class="mt-1 block w-full"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    placeholder="Date"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    required&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    type="text"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                />&ndash;&gt;-->
 
-                                <InputError
-                                    :message="form.errors.dateAttachee"
-                                    class="mt-2"
-                                />
-                            </div>
-                        </div>
+                        <!--                            &lt;!&ndash;                                <InputError&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    :message="form.errors.dateAttachee"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                    class="mt-2"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                />&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+                        <!--                        </div>-->
                     </div>
                     <div>
                         <h1
@@ -325,17 +312,17 @@ const form = useForm({
 
                             <TextAreaComponent
                                 id="remarksSupervisor"
-                                placeholder="Supervisor`s remarks"
-                                v-model="form.remarksSupervisor"
+                                v-model="form.supervisor_remarks"
                                 autocomplete="remarks Supervisor"
                                 autofocus
                                 class="mt-1 block w-full"
+                                placeholder="Supervisor`s remarks"
                                 required
                                 type="text"
                             />
 
                             <InputError
-                                :message="form.errors.remarksSupervisor"
+                                :message="form.errors.supervisor_remarks"
                                 class="mt-2"
                             />
                         </div>
@@ -348,7 +335,7 @@ const form = useForm({
 
                                 <TextInput
                                     id="nameSupervisor"
-                                    v-model="form.nameSupervisor"
+                                    v-model="form.supervisor_name"
                                     autocomplete="name"
                                     autofocus
                                     class="mt-1 block w-full"
@@ -361,33 +348,39 @@ const form = useForm({
                                     class="mt-2"
                                 />
                             </div>
-                            <div class="flex flex-row gap-3 w-full">
-                                <InputLabel
-                                    for="dateSupervisor"
-                                    value="Date:"
-                                />
+                            <!--                            <div class="flex flex-row gap-3 w-full">-->
+                            <!--                                <InputLabel-->
+                            <!--                                    for="dateSupervisor"-->
+                            <!--                                    value="Date:"-->
+                            <!--                                />-->
 
-                                <TextInput
-                                    id="dateSupervisor"
-                                    v-model="form.dateSupervisor"
-                                    autocomplete="date"
-                                    autofocus
-                                    class="mt-1 block w-full"
-                                    required
-                                    type="text"
-                                />
+                            <!--                                <TextInput-->
+                            <!--                                    id="dateSupervisor"-->
+                            <!--                                    v-model="form.dateSupervisor"-->
+                            <!--                                    autocomplete="date"-->
+                            <!--                                    autofocus-->
+                            <!--                                    class="mt-1 block w-full"-->
+                            <!--                                    required-->
+                            <!--                                    type="text"-->
+                            <!--                                />-->
 
-                                <InputError
-                                    :message="form.errors.dateSupervisor"
-                                    class="mt-2"
-                                />
-                            </div>
+                            <!--                                <InputError-->
+                            <!--                                    :message="form.errors.dateSupervisor"-->
+                            <!--                                    class="mt-2"-->
+                            <!--                                />-->
+                            <!--                            </div>-->
                         </div>
                     </div>
 
                     <!--                div:actions-->
                     <div class="flex flex-row gap-6">
-                        <button-submit>Submit Log</button-submit>
+                        <PrimaryButton
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                            class="ms-4"
+                        >
+                            Submit Log
+                        </PrimaryButton>
                         <button
                             class="bg-transparent border border-accent-200 text-black-200 px-4 py-2"
                         >
@@ -400,4 +393,4 @@ const form = useForm({
     </AuthenticatedLayout>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

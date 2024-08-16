@@ -1,10 +1,23 @@
 <script setup>
-import { defineEmits } from "vue";
+import { defineEmits, ref } from "vue";
 
 const emit = defineEmits(["cancelClick"]);
 
 const emitCancelClick = () => {
     emit("cancelClick");
+};
+const loading = ref(false);
+const markReadiness = async () => {
+    loading.value = true;
+    try {
+        const response = await axios.post(`/student/assess`);
+        // Emit event to inform parent component
+        emit("readiness-marked", response.data);
+    } catch (error) {
+        console.error("There was an error marking readiness:", error);
+    } finally {
+        loading.value = false;
+    }
 };
 </script>
 
@@ -20,9 +33,14 @@ const emitCancelClick = () => {
             </p>
             <!--    Div:actions-->
             <div class="flex flex-row gap-6 py-2">
-                <button class="text-black-200 bg-accent-200 py-3 px-5">
-                    Confirm
+                <button
+                    :disabled="loading"
+                    class="text-black-200 bg-accent-200 py-3 px-5"
+                    @click="markReadiness"
+                >
+                    {{ loading ? "Marking..." : "Confirm" }}
                 </button>
+
                 <button
                     class="text-black-200 bg-transparent border border-accent-200 py-3 px-6"
                     @click="emitCancelClick"
@@ -34,4 +52,4 @@ const emitCancelClick = () => {
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

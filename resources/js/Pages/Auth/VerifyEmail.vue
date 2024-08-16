@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from "vue";
-import GuestLayout from "@/Layouts/GuestLayout.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
+import AuthLayout from "@/Layouts/AuthLayout.vue";
 
 const props = defineProps({
     status: {
@@ -22,7 +22,7 @@ const verificationLinkSent = computed(
 </script>
 
 <template>
-    <GuestLayout>
+    <AuthLayout>
         <Head title="Email Verification" />
 
         <div class="mb-4 text-sm text-gray-600">
@@ -32,8 +32,8 @@ const verificationLinkSent = computed(
         </div>
 
         <div
-            class="mb-4 font-medium text-sm text-green-600"
             v-if="verificationLinkSent"
+            class="mb-4 font-medium text-sm text-green-600"
         >
             A new verification link has been sent to the email address you
             provided during registration.
@@ -50,12 +50,12 @@ const verificationLinkSent = computed(
 
                 <Link
                     :href="route('logout')"
-                    method="post"
                     as="button"
                     class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >Log Out</Link
-                >
+                    method="post"
+                    >Log Out
+                </Link>
             </div>
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>

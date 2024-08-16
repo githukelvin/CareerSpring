@@ -682,6 +682,11 @@ const routeobject = [
         routeName: "/supervisor/pendingTasks",
         icon: "LogoIcon",
     },
+    {
+        Name: "Logout",
+        routeName: "/logout",
+        icon: "LogoIcon",
+    },
 ];
 </script>
 

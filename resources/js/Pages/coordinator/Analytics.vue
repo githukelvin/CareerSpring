@@ -46,8 +46,8 @@ const routeobject = [
         icon: "LogoIcon",
     },
     {
-        Name: "Log Out",
-        routeName: "/coordinator/logout",
+        Name: "Logout",
+        routeName: "/logout",
         icon: "LogoIcon",
     },
 ];

@@ -9,6 +9,8 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'student_id';
+
     public function attachmentPlace()
     {
         return $this->belongsTo(AttachmentPlace::class);

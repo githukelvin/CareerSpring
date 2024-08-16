@@ -7,15 +7,15 @@
                 <div class="flex flex-row justify-between">
                     <div>
                         <input
-                            type="text"
+                            id=""
                             name=""
                             placeholder="Type  here to Search"
-                            id=""
+                            type="text"
                         />
                     </div>
 
                     <div>
-                        <select name="" id="">
+                        <select id="" name="">
                             <option value="">Status</option>
                             <option value="">Status</option>
                             <option value="">Status</option>
@@ -66,6 +66,11 @@ const routeobject = [
     {
         Name: "Pending Tasks",
         routeName: "/supervisor/pendingTasks",
+        icon: "LogoIcon",
+    },
+    {
+        Name: "Logout",
+        routeName: "/logout",
         icon: "LogoIcon",
     },
 ];

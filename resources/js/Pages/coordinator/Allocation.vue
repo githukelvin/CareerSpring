@@ -23,14 +23,14 @@
             <div class="flex flex-row justify-between items-center">
                 <div>
                     <input
-                        type="text"
+                        id=""
                         name=""
                         placeholder="Type to  search"
-                        id=""
+                        type="text"
                     />
                 </div>
                 <div>
-                    <select name="" id="">
+                    <select id="" name="">
                         <option value="department">Department</option>
                         <option value="department">Department</option>
                         <option value="department">Department</option>
@@ -41,16 +41,16 @@
             <div>
                 <div class="bg-primary-500 w-full py-4 mt-6 tabs">
                     <button
-                        @click="activeTab = 'allocated'"
-                        class="text-[1.125em] pl-9 text-white font-[medium]"
                         :class="{ active: activeTab === 'allocated' }"
+                        class="text-[1.125em] pl-9 text-white font-[medium]"
+                        @click="activeTab = 'allocated'"
                     >
                         Allocated Supervisors
                     </button>
                     <button
-                        @click="activeTab = 'pending'"
-                        class="text-[1.125em] pl-9 text-white font-[medium]"
                         :class="{ active: activeTab === 'pending' }"
+                        class="text-[1.125em] pl-9 text-white font-[medium]"
+                        @click="activeTab = 'pending'"
                     >
                         Pending Allocations
                     </button>
@@ -59,9 +59,9 @@
                 <!--                Tables-->
                 <div>
                     <AllocatedSupervisor
-                        @cancel-click="confirm = !confirm"
                         v-if="activeTab === 'allocated'"
                         :allocations="allocatedSupervisors"
+                        @cancel-click="confirm = !confirm"
                     />
                     <PendingAllocation
                         v-if="activeTab === 'pending'"
@@ -107,6 +107,11 @@ const routeobject = [
     {
         Name: "Settings",
         routeName: "/coordinator/settings",
+        icon: "LogoIcon",
+    },
+    {
+        Name: "Logout",
+        routeName: "/logout",
         icon: "LogoIcon",
     },
 ];

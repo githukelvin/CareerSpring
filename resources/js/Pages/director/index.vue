@@ -61,6 +61,11 @@ const routeobject = [
         routeName: "director/students",
         icon: "LogoIcon",
     },
+    {
+        Name: "Logout",
+        routeName: "/logout",
+        icon: "LogoIcon",
+    },
 ];
 </script>
 
