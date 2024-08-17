@@ -12,7 +12,9 @@ return new class extends Migration {
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained('students', 'student_id')->cascadeOnDelete();
+            $table->foreignId('student_id')
+                ->constrained('students', 'student_id')
+                ->cascadeOnDelete();
             $table->string('full_name');
             $table->string('registration_number');
             $table->string('school_email')->unique();

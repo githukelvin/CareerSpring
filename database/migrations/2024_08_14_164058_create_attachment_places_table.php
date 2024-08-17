@@ -12,7 +12,9 @@ return new class extends Migration {
     {
         Schema::create('attachment_places', function (Blueprint $table) {
             $table->id('organization_id')->primary();
-            $table->foreignId('student_id')->constrained('students', 'student_id')->cascadeOnDelete();
+            $table->foreignId('student_id')
+                ->constrained('students', 'student_id')
+                ->cascadeOnDelete();
             $table->string('organization_name');
             $table->string('physical_address');
             $table->string('postal_address');

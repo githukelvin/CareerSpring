@@ -12,7 +12,9 @@ return new class extends Migration {
     {
         Schema::create('weekly_logs', function (Blueprint $table) {
             $table->id('log_id')->primary();
-            $table->foreignId('student_id')->constrained('students', 'student_id')->cascadeOnDelete();
+            $table->foreignId('student_id')
+                ->constrained('students', 'student_id')
+                ->cascadeOnDelete();
             $table->integer('week_number');
             $table->date('date_from');
             $table->date('date_to');
