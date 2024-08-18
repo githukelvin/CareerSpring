@@ -1,0 +1,50 @@
+php artisan route:list --name=student
+
+  GET|HEAD  / ......................................................................................................................................
+  GET|HEAD  _debugbar/assets/javascript ................................................ debugbar.assets.js › Barryvdh\Debugbar › AssetController@js
+  GET|HEAD  _debugbar/assets/stylesheets ............................................. debugbar.assets.css › Barryvdh\Debugbar › AssetController@css
+  DELETE    _debugbar/cache/{key}/{tags?} ....................................... debugbar.cache.delete › Barryvdh\Debugbar › CacheController@delete
+  GET|HEAD  _debugbar/clockwork/{id} ...................................... debugbar.clockwork › Barryvdh\Debugbar › OpenHandlerController@clockwork
+  GET|HEAD  _debugbar/open ................................................. debugbar.openhandler › Barryvdh\Debugbar › OpenHandlerController@handle
+  GET|HEAD  confirm-password ............................................................ password.confirm › Auth\ConfirmablePasswordController@show
+  POST      confirm-password .............................................................................. Auth\ConfirmablePasswordController@store
+  GET|HEAD  coordinator .......................................................................................................... coordinator.index
+  GET|HEAD  coordinator/allocation .......................................................................................... coordinator.allocation
+  GET|HEAD  coordinator/analytics ............................................................................................ coordinator.analytics
+  GET|HEAD  coordinator/settings .............................................................................................. coordinator.settings
+  GET|HEAD  director ................................................................................................................ director.index
+  GET|HEAD  director/approval .................................................................................................... director.approval
+  GET|HEAD  director/students .................................................................................................... director.students
+  POST      email/verification-notification ................................. verification.send › Auth\EmailVerificationNotificationController@store
+  GET|HEAD  forgot-password ............................................................. password.request › Auth\PasswordResetLinkController@create
+  POST      forgot-password ................................................................ password.email › Auth\PasswordResetLinkController@store
+  GET|HEAD  login ............................................................................... login › Auth\AuthenticatedSessionController@create
+  POST      login ........................................................................................ Auth\AuthenticatedSessionController@store
+  GET|HEAD  logout ............................................................................ logout › Auth\AuthenticatedSessionController@destroy
+  PUT       password .............................................................................. password.update › Auth\PasswordController@update
+  GET|HEAD  profile .......................................................................................... profile.edit › ProfileController@edit
+  PATCH     profile ...................................................................................... profile.update › ProfileController@update
+  DELETE    profile .................................................................................... profile.destroy › ProfileController@destroy
+  GET|HEAD  register ............................................................................... register › Auth\RegisteredUserController@create
+  POST      register ........................................................................................... Auth\RegisteredUserController@store
+  POST      reset-password ....................................................................... password.store › Auth\NewPasswordController@store
+  GET|HEAD  reset-password/{token} .............................................................. password.reset › Auth\NewPasswordController@create
+  GET|HEAD  sanctum/csrf-cookie .................................................. sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
+  GET|HEAD  signout ................................................................................................................................
+  GET|HEAD  student/assess ............................................................................... student.assess › StudentController@assess
+  POST      student/assess ................................................................... student.assess.mark › StudentController@markReadiness
+  GET|HEAD  student/attachment ............................................................. student.attachment.create › AttachmentController@create
+  POST      student/attachment ............................................................... student.attachment.store › AttachmentController@store
+  GET|HEAD  student/documents .................................................................................................... student.documents
+  GET|HEAD  student/logging .................................................................... student.logging.create › WeeklyLogController@create
+  POST      student/logging ...................................................................... student.logging.store › WeeklyLogController@store
+  GET|HEAD  student/student ................................................................................ student.index › StudentController@index
+  GET|HEAD  supervisor ............................................................................................................ supervisor.index
+  GET|HEAD  supervisor/allocatedStudents .............................................................................. supervisor.allocatedStudents
+  GET|HEAD  supervisor/assessmentVisits ................................................................................ supervisor.assessmentVisits
+  GET|HEAD  supervisor/pendingTasks ........................................................................................ supervisor.pendingTasks
+  GET|HEAD  up .....................................................................................................................................
+  GET|HEAD  verify-email .............................................................. verification.notice › Auth\EmailVerificationPromptController
+  GET|HEAD  verify-email/{id}/{hash} .............................................................. verification.verify › Auth\VerifyEmailController
+
+                                                                                                                                 Showing [46] routes

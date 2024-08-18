@@ -34,10 +34,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         $user = Auth::user();
         return match ($user->role->value) {
-            'Coordinator' => redirect()->intended(route('coordinator', absolute: false)),
-            'Lecturer' => redirect()->intended(route('supervisor', absolute: false)),
-            'Director' => redirect()->intended(route('director', absolute: false)),
-            default => redirect()->intended(route('student', absolute: false)),
+            'Coordinator' => redirect()->intended(route('coordinator.index', absolute: false)),
+            'Lecturer' => redirect()->intended(route('supervisor.index', absolute: false)),
+            'Director' => redirect()->intended(route('director.index', absolute: false)),
+            default => redirect()->intended(route('student.index', absolute: false)),
         };
     }
 

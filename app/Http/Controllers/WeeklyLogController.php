@@ -32,7 +32,7 @@ class WeeklyLogController extends Controller
         WeeklyLog::create($data);
         $student->progress_level = $student->progress_level + 5;
         $student->save();
-        return redirect()->route('student')->with('success', 'Week Log submitted successfully');
+        return redirect()->route('student.index')->with('success', 'Week Log submitted successfully');
     }
 
     public function create()

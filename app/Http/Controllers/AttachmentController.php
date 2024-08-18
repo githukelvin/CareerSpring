@@ -33,7 +33,7 @@ class AttachmentController extends Controller
         Attachment::create($data);
         $student->progress_level = $student->progress_level + 10;
         $student->save();
-        return redirect()->route('student')->with('success', 'Form submitted successfully');
+        return redirect()->route('student.index')->with('success', 'Form submitted successfully');
 
     }
 

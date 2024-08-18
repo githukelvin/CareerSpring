@@ -3,24 +3,28 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import { useForm } from "@inertiajs/vue3";
-import ButtonSubmit from "@/Components/ButtonSubmit.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const form = useForm({
-    adminNo: "",
+    admin_no: "",
     gender: "",
-    idNo: "",
-    DOB: "",
+    id_no: "",
+    dob: "",
     course: "",
     level: "",
     year: "",
-    homeAddress: "",
-    telNo: "",
-    nextOfKin: "",
-    relationship: "",
-    postalAddress: "",
-    postalCode: "",
-    telNoKin: "",
+    home_address: "",
+    tel_no: "",
+    next_of_kin_name: "",
+    next_of_kin_relationship: "",
+    next_of_kin_address: "",
+    next_of_kin_tel: "",
 });
+const submit = () => {
+    form.post(route("student.store"), {
+        onFinish: () => form.reset(),
+    });
+};
 </script>
 
 <template>
@@ -28,14 +32,18 @@ const form = useForm({
         <h1 class="font-[semibold] text-sm text-black-200 py-2">
             Personal Information
         </h1>
-        <form action="" class="flex flex-col gap-3" method="post">
+        <form
+            class="flex flex-col gap-3"
+            method="post"
+            @submit.prevent="submit"
+        >
             <div class="grid grid-cols-2 gap-6">
                 <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="adminNo" value="Admin No:" />
+                    <InputLabel for="admin_no" value="Admin No:" />
 
                     <TextInput
-                        id="adminNo"
-                        v-model="form.adminNo"
+                        id="admin_no"
+                        v-model="form.admin_no"
                         autocomplete="lastname"
                         autofocus
                         class="mt-1 block w-full"
@@ -43,7 +51,7 @@ const form = useForm({
                         type="text"
                     />
 
-                    <InputError :message="form.errors.adminNo" class="mt-2" />
+                    <InputError :message="form.errors.admin_no" class="mt-2" />
                 </div>
                 <div class="flex flex-row gap-3">
                     <InputLabel for="gender" value="Gender:" />
@@ -54,6 +62,7 @@ const form = useForm({
                             v-model="form.gender"
                             name="gender"
                             type="radio"
+                            value="Female"
                         />
 
                         Female
@@ -64,6 +73,7 @@ const form = useForm({
                             v-model="form.gender"
                             name="gender"
                             type="radio"
+                            value="Male"
                         />
                         Male
                     </div>
@@ -71,10 +81,10 @@ const form = useForm({
                     <InputError :message="form.errors.gender" class="mt-2" />
                 </div>
                 <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="idNo" value="ID No:" />
+                    <InputLabel for="id_no" value="ID No:" />
                     <TextInput
-                        id="idNo"
-                        v-model="form.idNo"
+                        id="id_no"
+                        v-model="form.id_no"
                         autocomplete="lastname"
                         autofocus
                         class="mt-1 block w-full"
@@ -82,14 +92,14 @@ const form = useForm({
                         type="text"
                     />
 
-                    <InputError :message="form.errors.idNo" class="mt-2" />
+                    <InputError :message="form.errors.id_no" class="mt-2" />
                 </div>
                 <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="DOB" value="DOB:" />
+                    <InputLabel for="dob" value="DOB:" />
 
                     <TextInput
-                        id="DOB"
-                        v-model="form.DOB"
+                        id="dob"
+                        v-model="form.dob"
                         autocomplete="lastname"
                         autofocus
                         class="mt-1 block w-full"
@@ -97,7 +107,7 @@ const form = useForm({
                         type="text"
                     />
 
-                    <InputError :message="form.errors.DOB" class="mt-2" />
+                    <InputError :message="form.errors.dob" class="mt-2" />
                 </div>
             </div>
             <div class="grid lg:grid-cols-3 gap-3">
@@ -149,11 +159,11 @@ const form = useForm({
             </div>
             <div class="grid grid-cols-2 gap-6">
                 <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="homeAddress" value="Home Address:" />
+                    <InputLabel for="home_address" value="Home Address:" />
 
                     <TextInput
-                        id="homeAddress"
-                        v-model="form.homeAddress"
+                        id="home_address"
+                        v-model="form.home_address"
                         autocomplete="lastname"
                         autofocus
                         class="mt-1 block w-full"
@@ -162,16 +172,16 @@ const form = useForm({
                     />
 
                     <InputError
-                        :message="form.errors.homeAddress"
+                        :message="form.errors.home_address"
                         class="mt-2"
                     />
                 </div>
                 <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="telNo" value="Tel No:" />
+                    <InputLabel for="tel_no" value="Tel No:" />
 
                     <TextInput
-                        id="telNo"
-                        v-model="form.telNo"
+                        id="tel_no"
+                        v-model="form.tel_no"
                         autocomplete="lastname"
                         autofocus
                         class="mt-1 block w-full"
@@ -179,29 +189,17 @@ const form = useForm({
                         type="text"
                     />
 
-                    <InputError :message="form.errors.telNo" class="mt-2" />
+                    <InputError :message="form.errors.tel_no" class="mt-2" />
                 </div>
                 <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="nextOfKin" value="Next of Kin(name):" />
-
-                    <TextInput
-                        id="nextOfKin"
-                        v-model="form.nextOfKin"
-                        autocomplete="lastname"
-                        autofocus
-                        class="mt-1 block w-full"
-                        required
-                        type="text"
+                    <InputLabel
+                        for="next_of_kin_name"
+                        value="Next of Kin(name):"
                     />
 
-                    <InputError :message="form.errors.nextOfKin" class="mt-2" />
-                </div>
-                <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="relationship" value="Relationship:" />
-
                     <TextInput
-                        id="relationship"
-                        v-model="form.relationship"
+                        id="next_of_kin_name"
+                        v-model="form.next_of_kin_name"
                         autocomplete="lastname"
                         autofocus
                         class="mt-1 block w-full"
@@ -210,18 +208,42 @@ const form = useForm({
                     />
 
                     <InputError
-                        :message="form.errors.relationship"
+                        :message="form.errors.next_of_kin_name"
+                        class="mt-2"
+                    />
+                </div>
+                <div class="flex flex-row gap-3 w-full">
+                    <InputLabel
+                        for="next_of_kin_relationship"
+                        value="Relationship:"
+                    />
+
+                    <TextInput
+                        id="next_of_kin_relationship"
+                        v-model="form.next_of_kin_relationship"
+                        autocomplete="lastname"
+                        autofocus
+                        class="mt-1 block w-full"
+                        required
+                        type="text"
+                    />
+
+                    <InputError
+                        :message="form.errors.next_of_kin_relationship"
                         class="mt-2"
                     />
                 </div>
             </div>
-            <div class="grid grid-cols-3 gap-3">
+            <div class="grid grid-cols-2 gap-3">
                 <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="postalAddress" value="Postal Address:" />
+                    <InputLabel
+                        for="next_of_kin_address"
+                        value="Postal Address:"
+                    />
 
                     <TextInput
-                        id="postalAddress"
-                        v-model="form.postalAddress"
+                        id="next_of_kin_address"
+                        v-model="form.next_of_kin_address"
                         autocomplete="lastname"
                         autofocus
                         class="mt-1 block w-full"
@@ -230,16 +252,34 @@ const form = useForm({
                     />
 
                     <InputError
-                        :message="form.errors.postalAddress"
+                        :message="form.errors.next_of_kin_address"
                         class="mt-2"
                     />
                 </div>
+                <!--                <div class="flex flex-row gap-3 w-full">-->
+                <!--                    <InputLabel for="postalCode" value="Postal Code:" />-->
+
+                <!--                    <TextInput-->
+                <!--                        id="postalCode"-->
+                <!--                        v-model="form.postalCode"-->
+                <!--                        autocomplete="lastname"-->
+                <!--                        autofocus-->
+                <!--                        class="mt-1 block w-full"-->
+                <!--                        required-->
+                <!--                        type="text"-->
+                <!--                    />-->
+
+                <!--                    <InputError-->
+                <!--                        :message="form.errors.next_of_kin_address"-->
+                <!--                        class="mt-2"-->
+                <!--                    />-->
+                <!--                </div>-->
                 <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="postalCode" value="Postal Code:" />
+                    <InputLabel for="next_of_kin_tel" value="Tel No:" />
 
                     <TextInput
-                        id="postalCode"
-                        v-model="form.postalCode"
+                        id="next_of_kin_tel"
+                        v-model="form.next_of_kin_tel"
                         autocomplete="lastname"
                         autofocus
                         class="mt-1 block w-full"
@@ -248,29 +288,20 @@ const form = useForm({
                     />
 
                     <InputError
-                        :message="form.errors.postalCode"
+                        :message="form.errors.next_of_kin_tel"
                         class="mt-2"
                     />
-                </div>
-                <div class="flex flex-row gap-3 w-full">
-                    <InputLabel for="telNoKin" value="Tel No:" />
-
-                    <TextInput
-                        id="telNoKin"
-                        v-model="form.telNoKin"
-                        autocomplete="lastname"
-                        autofocus
-                        class="mt-1 block w-full"
-                        required
-                        type="text"
-                    />
-
-                    <InputError :message="form.errors.telNoKin" class="mt-2" />
                 </div>
             </div>
             <!--        Div action-->
             <div class="flex flex-row gap-6">
-                <button-submit> Save</button-submit>
+                <PrimaryButton
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                    class="ms-4"
+                >
+                    Save
+                </PrimaryButton>
                 <button
                     class="text-black-100 px-5 py-2 border border-accent-200"
                 >

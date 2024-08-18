@@ -49,6 +49,7 @@ const routeobject = [
 const student = usePage().props.student;
 const hasFilledDocs = usePage().props.hasFilledDocs;
 const logBookWeek = usePage().props.weekLog;
+const approved = usePage().props.approved;
 
 const value = ref(50);
 
@@ -108,7 +109,7 @@ const rangeStyle = computed(() => ({
                         </Link>
                     </div>
                 </div>
-                <div v-show="!hasFilledDocs">
+                <div>
                     <div class="grid grid-cols-[20em_auto] mb-12 gap-10">
                         <div>
                             <UploadImage />
@@ -117,13 +118,24 @@ const rangeStyle = computed(() => ({
                             <PersonalInformationComponent />
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <TrainingInstituionComponent />
+                    <div v-if="approved">
+                        <div
+                            v-show="!hasFilledDocs"
+                            class="grid grid-cols-2 gap-4"
+                        >
+                            <div>
+                                <TrainingInstituionComponent />
+                            </div>
+                            <div>
+                                <AttachmentInformationComponent />
+                            </div>
                         </div>
-                        <div>
-                            <AttachmentInformationComponent />
-                        </div>
+                    </div>
+                    <div v-else>
+                        <p class="py-6 text-center">
+                            Awaiting Approval from Director To enable you to
+                            fill in details
+                        </p>
                     </div>
                 </div>
             </div>

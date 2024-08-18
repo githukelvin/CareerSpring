@@ -1,0 +1,110 @@
+[
+    {
+        "domain": null,
+        "method": "GET|HEAD",
+        "uri": "director\/students",
+        "name": "director.students",
+        "action": "Closure",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    },
+    {
+        "domain": null,
+        "method": "GET|HEAD",
+        "uri": "student\/assess",
+        "name": "student.assess",
+        "action": "App\\Http\\Controllers\\StudentController@assess",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    },
+    {
+        "domain": null,
+        "method": "POST",
+        "uri": "student\/assess",
+        "name": "student.assess.mark",
+        "action": "App\\Http\\Controllers\\StudentController@markReadiness",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    },
+    {
+        "domain": null,
+        "method": "GET|HEAD",
+        "uri": "student\/attachment",
+        "name": "student.attachment.create",
+        "action": "App\\Http\\Controllers\\AttachmentController@create",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    },
+    {
+        "domain": null,
+        "method": "POST",
+        "uri": "student\/attachment",
+        "name": "student.attachment.store",
+        "action": "App\\Http\\Controllers\\AttachmentController@store",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    },
+    {
+        "domain": null,
+        "method": "GET|HEAD",
+        "uri": "student\/documents",
+        "name": "student.documents",
+        "action": "Closure",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    },
+    {
+        "domain": null,
+        "method": "GET|HEAD",
+        "uri": "student\/logging",
+        "name": "student.logging.create",
+        "action": "App\\Http\\Controllers\\WeeklyLogController@create",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    },
+    {
+        "domain": null,
+        "method": "POST",
+        "uri": "student\/logging",
+        "name": "student.logging.store",
+        "action": "App\\Http\\Controllers\\WeeklyLogController@store",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    },
+    {
+        "domain": null,
+        "method": "GET|HEAD",
+        "uri": "student\/student",
+        "name": "student.index",
+        "action": "App\\Http\\Controllers\\StudentController@index",
+        "middleware": [
+            "web",
+            "Illuminate\\Auth\\Middleware\\Authenticate",
+            "Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified"
+        ]
+    }
+]

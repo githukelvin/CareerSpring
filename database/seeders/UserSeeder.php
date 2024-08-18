@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,20 +21,20 @@ class UserSeeder extends Seeder
             'name' => 'Coordinator',
             'email' => 'coordinator@example.com',
             'password' => bcrypt('coordinator@example.com'),
-            'role' => 'Coordinator',
+            'role' => UserRole::Coordinator->value,
         ]);
         User::factory()->create([
             'name' => 'Lecturer',
             'email' => 'lecturer@example.com',
             'password' => bcrypt('lecturer@example.com'),
-            'role' => 'Lecturer',
+            'role' => UserRole::Lecturer->value,
 
         ]);
         User::factory()->create([
             'name' => 'director',
             'email' => 'director@example.com',
             'password' => bcrypt('director@example.com'),
-            'role' => 'Director',
+            'role' => UserRole::Director->value,
         ]);
     }
 }

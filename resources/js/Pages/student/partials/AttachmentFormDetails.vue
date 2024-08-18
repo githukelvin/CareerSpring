@@ -20,7 +20,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("student/attachment"), {
+    form.post(route("student.attachment.store"), {
         onFinish: () => form.reset(),
     });
 };

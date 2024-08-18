@@ -1,9 +1,10 @@
 <script setup>
-import { Head } from "@inertiajs/vue3";
+import { Head, usePage } from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import ConfirmComponent from "@/Components/ConfirmComponent.vue";
 import ErrorComponent from "@/Components/ErrorComponent.vue";
 import { ref } from "vue";
+
 const routeobject = [
     {
         Name: "Dashboard",
@@ -36,8 +37,18 @@ const routeobject = [
         icon: "LogoIcon",
     },
 ];
+const student = usePage().props.student;
 
 const confirm = ref(false);
+const marked = ref(false);
+const readinessData = ref(null);
+
+const handleReadinessMarked = (data) => {
+    readinessData.value = data;
+    confirm.value = false;
+    marked.value = false;
+    console.log("Readiness marked with data:", data);
+};
 </script>
 
 <template>
@@ -56,8 +67,19 @@ const confirm = ref(false);
                             Assessment status
                         </h1>
 
-                        <p class="text-accent-200 text-2xl font-[medium]">
+                        <p
+                            v-if="student.is_ready_for_assessment === 0"
+                            class="text-accent-200 text-2xl font-[medium]"
+                        >
                             Pending
+                        </p>
+                        <p
+                            v-else-if="
+                                marked || student.is_ready_for_assessment === 1
+                            "
+                            class="text-primary-500 text-2xl font-[medium]"
+                        >
+                            Marked Ready
                         </p>
 
                         <button
@@ -109,8 +131,11 @@ const confirm = ref(false);
                     </div>
                 </div>
             </div>
-            <div class="" v-show="confirm">
-                <ConfirmComponent @cancel-click="confirm = !confirm" />
+            <div v-show="confirm" class="">
+                <ConfirmComponent
+                    @readiness-marked="handleReadinessMarked"
+                    @cancel-click="confirm = !confirm"
+                />
             </div>
             <div v-show="false">
                 <ErrorComponent />
@@ -119,4 +144,4 @@ const confirm = ref(false);
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

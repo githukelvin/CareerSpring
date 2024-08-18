@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AttachmentController;
+use App\Http\Controllers\AttachmentPlaceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TrainingInstitutionController;
 use App\Http\Controllers\WeeklyLogController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -12,69 +14,45 @@ Route::get('/', function () {
 });
 
 
-//Route::get('/dashboard', function () {
-//    return Inertia::render('Dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth', 'verified')->group(function () {
-
-//start  student  routes
-    Route::get('/student', [StudentController::class, 'index'])->name('student');
-    Route::get('student/attachment', [AttachmentController::class, 'create'])->name('student/attachment');
-    Route::post('student/attachment', [AttachmentController::class, 'store']);
-    Route::get('student/logging', [WeeklyLogController::class, 'create'])->name('student/logging');
-    Route::post('student/logging', [WeeklyLogController::class, 'store']);
-    Route::get('student/assess', [StudentController::class, 'assess'])->name('student/assess');
-    Route::post('student/assess', [StudentController::class, 'markReadiness']);
-    Route::get('/student/documents', function () {
-        return Inertia::render('student/documents');
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Student Routes
+    Route::prefix('student')->name('student.')->group(function () {
+        Route::get('/', [StudentController::class, 'index'])->name('index');
+        Route::post('/personal', [StudentController::class, 'store'])->name('store');
+        Route::post('/training', [TrainingInstitutionController::class, 'store'])->name('training');
+        Route::post('/attachmentplace', [AttachmentPlaceController::class, 'store'])->name('attachment_place');
+        Route::get('/attachment', [AttachmentController::class, 'create'])->name('attachment.create');
+        Route::post('/attachment', [AttachmentController::class, 'store'])->name('attachment.store');
+        Route::get('/logging', [WeeklyLogController::class, 'create'])->name('logging.create');
+        Route::post('/logging', [WeeklyLogController::class, 'store'])->name('logging.store');
+        Route::get('/assess', [StudentController::class, 'assess'])->name('assess');
+        Route::post('/assess', [StudentController::class, 'markReadiness'])->name('assess.mark');
+        Route::get('/documents', fn() => Inertia::render('student/documents'))->name('documents');
     });
 
-//end  student  routes
-    //star  routes of supervisor
-    Route::get('/supervisor', function () {
-        return Inertia::render('supervisor/index');
-    })->name('supervisor');
-    Route::get('/supervisor/allocatedStudents', function () {
-        return Inertia::render('supervisor/AllocatedStudents');
-    });
-    Route::get('/supervisor/assessmentVisits', function () {
-        return Inertia::render('supervisor/AssessmentVisits');
-    });
-    Route::get('/supervisor/pendingTasks', function () {
-        return Inertia::render('supervisor/PendingTasks');
-    });
-//end of routes  supervisor
-
-//Routes  Director
-    Route::get('/director', function () {
-        return Inertia::render('director/index');
-    })->name('director');
-    Route::get('/director/approval', function () {
-        return Inertia::render('director/Approval');
-    });
-    Route::get('/director/students', function () {
-        return Inertia::render('director/StudentManagement');
-    });
-//end  rule  director
-
-//start of coordinator routes
-    Route::get('/coordinator', function () {
-        return Inertia::render('coordinator/index');
-    })->name('coordinator');
-
-    Route::get('/coordinator/analytics', function () {
-        return Inertia::render('coordinator/Analytics');
-    });
-    Route::get('/coordinator/allocation', function () {
-        return Inertia::render('coordinator/Allocation');
-    });
-    Route::get('/coordinator/settings', function () {
-        return Inertia::render('coordinator/settings');
+    // Supervisor Routes
+    Route::prefix('supervisor')->name('supervisor.')->group(function () {
+        Route::get('/', fn() => Inertia::render('supervisor/index'))->name('index');
+        Route::get('/allocatedStudents', fn() => Inertia::render('supervisor/AllocatedStudents'))->name('allocatedStudents');
+        Route::get('/assessmentVisits', fn() => Inertia::render('supervisor/AssessmentVisits'))->name('assessmentVisits');
+        Route::get('/pendingTasks', fn() => Inertia::render('supervisor/PendingTasks'))->name('pendingTasks');
     });
 
+    // Director Routes
+    Route::prefix('director')->name('director.')->group(function () {
+        Route::get('/', fn() => Inertia::render('director/index'))->name('index');
+        Route::get('/approval', fn() => Inertia::render('director/Approval'))->name('approval');
+        Route::get('/students', fn() => Inertia::render('director/StudentManagement'))->name('students');
+    });
+
+    // Coordinator Routes
+    Route::prefix('coordinator')->name('coordinator.')->group(function () {
+        Route::get('/', fn() => Inertia::render('coordinator/index'))->name('index');
+        Route::get('/analytics', fn() => Inertia::render('coordinator/Analytics'))->name('analytics');
+        Route::get('/allocation', fn() => Inertia::render('coordinator/Allocation'))->name('allocation');
+        Route::get('/settings', fn() => Inertia::render('coordinator/Settings'))->name('settings');
+    });
 });
-
 // route  logout
 Route::get('/signout', function () {
     return Inertia::render('signout');

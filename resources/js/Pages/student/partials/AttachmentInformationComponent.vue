@@ -1,24 +1,29 @@
 <script setup>
-import ButtonSubmit from "@/Components/ButtonSubmit.vue";
 import { useForm } from "@inertiajs/vue3";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const form = useForm({
-    nameOrganization: "",
-    physicalAddress: "",
-    postalAddress: "",
-    telNo: "",
-    email: "",
-    department: "",
-    nameOfHead: "",
-    telNoHead: "",
-    supervisorName: "",
-    telNoSupervisor: "",
+    organization_name: "",
+    physical_address: "",
+    postal_address: "",
+    tel_no: "",
+    organization_email: "",
+    department_name: "",
+    head_name: "",
+    head_tel: "",
+    supervisor_name: "",
+    supervisor_tel: "",
     designation: "",
     signature: "",
 });
+const submit = () => {
+    form.post(route("student.attachment_place"), {
+        onFinish: () => form.reset(),
+    });
+};
 </script>
 
 <template>
@@ -26,7 +31,7 @@ const form = useForm({
         <h1 class="font-[semibold] text-sm text-black-200 py-2">
             Details of Attachment place
         </h1>
-        <form class="flex flex-col gap-5" action="" method="post">
+        <form class="flex flex-col gap-5" @submit.prevent="submit">
             <div class="flex flex-row gap-3 w-full">
                 <InputLabel
                     for="nameOrganization"
@@ -35,7 +40,7 @@ const form = useForm({
 
                 <TextInput
                     id="nameOrganization"
-                    v-model="form.nameOrganization"
+                    v-model="form.organization_name"
                     autocomplete="organization"
                     autofocus
                     class="mt-1 block w-full"
@@ -44,7 +49,7 @@ const form = useForm({
                 />
 
                 <InputError
-                    :message="form.errors.nameOrganization"
+                    :message="form.errors.organization_name"
                     class="mt-2"
                 />
             </div>
@@ -53,7 +58,7 @@ const form = useForm({
 
                 <TextInput
                     id="physicalAddress"
-                    v-model="form.physicalAddress"
+                    v-model="form.physical_address"
                     autocomplete="Physical Address"
                     autofocus
                     class="mt-1 block w-full"
@@ -62,7 +67,7 @@ const form = useForm({
                 />
 
                 <InputError
-                    :message="form.errors.physicalAddress"
+                    :message="form.errors.physical_address"
                     class="mt-2"
                 />
             </div>
@@ -71,7 +76,7 @@ const form = useForm({
 
                 <TextInput
                     id="postalAddress"
-                    v-model="form.postalAddress"
+                    v-model="form.postal_address"
                     autocomplete="Postal Address"
                     autofocus
                     class="mt-1 block w-full"
@@ -79,14 +84,17 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.postalAddress" class="mt-2" />
+                <InputError
+                    :message="form.errors.postal_address"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
                 <InputLabel for="telNo" value="Tel No:" />
 
                 <TextInput
                     id="telNo"
-                    v-model="form.telNo"
+                    v-model="form.tel_no"
                     autocomplete="Tel no"
                     autofocus
                     class="mt-1 block w-full"
@@ -94,7 +102,7 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.telNo" class="mt-2" />
+                <InputError :message="form.errors.tel_no" class="mt-2" />
             </div>
 
             <div class="flex flex-row gap-3 w-full">
@@ -102,7 +110,7 @@ const form = useForm({
 
                 <TextInput
                     id="email"
-                    v-model="form.email"
+                    v-model="form.organization_email"
                     autocomplete="Faculty dean"
                     autofocus
                     class="mt-1 block w-full"
@@ -110,14 +118,17 @@ const form = useForm({
                     type="email"
                 />
 
-                <InputError :message="form.errors.email" class="mt-2" />
+                <InputError
+                    :message="form.errors.organization_email"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
                 <InputLabel for="department" value="Department Attached:" />
 
                 <TextInput
                     id="department"
-                    v-model="form.department"
+                    v-model="form.department_name"
                     autocomplete="department"
                     autofocus
                     class="mt-1 block w-full"
@@ -125,14 +136,17 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.department" class="mt-2" />
+                <InputError
+                    :message="form.errors.department_name"
+                    class="mt-2"
+                />
             </div>
             <div class="flex flex-row gap-3 w-full">
                 <InputLabel for="nameOfHead" value="Name of Head:" />
 
                 <TextInput
                     id="nameOfHead"
-                    v-model="form.nameOfHead"
+                    v-model="form.head_name"
                     autocomplete="Faculty dean"
                     autofocus
                     class="mt-1 block w-full"
@@ -140,7 +154,7 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.nameOfHead" class="mt-2" />
+                <InputError :message="form.errors.head_name" class="mt-2" />
             </div>
 
             <div class="flex flex-row gap-3 w-full">
@@ -148,7 +162,7 @@ const form = useForm({
 
                 <TextInput
                     id="telNoHead"
-                    v-model="form.telNoHead"
+                    v-model="form.head_tel"
                     autocomplete="tel No"
                     autofocus
                     class="mt-1 block w-full"
@@ -156,14 +170,14 @@ const form = useForm({
                     type="text"
                 />
 
-                <InputError :message="form.errors.telNoHead" class="mt-2" />
+                <InputError :message="form.errors.head_tel" class="mt-2" />
             </div>
             <div class="flex flex-row gap-3 w-full">
                 <InputLabel for="supervisorName" value="Supervisor`s Name:" />
 
                 <TextInput
                     id="supervisorName"
-                    v-model="form.supervisorName"
+                    v-model="form.supervisor_name"
                     autocomplete="name"
                     autofocus
                     class="mt-1 block w-full"
@@ -172,7 +186,7 @@ const form = useForm({
                 />
 
                 <InputError
-                    :message="form.errors.supervisorName"
+                    :message="form.errors.supervisor_name"
                     class="mt-2"
                 />
             </div>
@@ -181,7 +195,7 @@ const form = useForm({
 
                 <TextInput
                     id="telNoSupervisor"
-                    v-model="form.telNoSupervisor"
+                    v-model="form.supervisor_tel"
                     autocomplete="tel"
                     autofocus
                     class="mt-1 block w-full"
@@ -190,7 +204,7 @@ const form = useForm({
                 />
 
                 <InputError
-                    :message="form.errors.telNoSupervisor"
+                    :message="form.errors.supervisor_tel"
                     class="mt-2"
                 />
             </div>
@@ -227,10 +241,16 @@ const form = useForm({
             </div>
             <!--            div actions-->
             <div>
-                <button-submit> save </button-submit>
+                <PrimaryButton
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                    class="ms-4"
+                >
+                    Save
+                </PrimaryButton>
             </div>
         </form>
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

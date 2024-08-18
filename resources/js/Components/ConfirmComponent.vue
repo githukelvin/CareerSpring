@@ -10,7 +10,7 @@ const loading = ref(false);
 const markReadiness = async () => {
     loading.value = true;
     try {
-        const response = await axios.post(`/student/assess`);
+        const response = await axios.post(route("student.assess.mark"));
         // Emit event to inform parent component
         emit("readiness-marked", response.data);
     } catch (error) {

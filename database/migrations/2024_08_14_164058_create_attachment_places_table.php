@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->string('organization_email');
             $table->string('department_name');
             $table->string('head_name');
+            $table->string('head_tel');
             $table->string('supervisor_name');
             $table->string('supervisor_tel');
             $table->string('designation');

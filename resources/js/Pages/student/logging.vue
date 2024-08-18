@@ -55,7 +55,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route("student/logging"), {
+    form.post(route("student.logging.store"), {
         onFinish: () => form.reset(),
     });
 };
