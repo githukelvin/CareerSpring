@@ -20,6 +20,7 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "@inertiajs/inertia": "^0.11.1",
         "apexcharts": "^3.51.0",
         "vue-apexcharts": "^1.6.2",
         "vue3-apexcharts": "^1.5.3"

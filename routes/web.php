@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/assess', [StudentController::class, 'assess'])->name('assess');
         Route::post('/assess', [StudentController::class, 'markReadiness'])->name('assess.mark');
         Route::get('/documents', fn() => Inertia::render('student/documents'))->name('documents');
+        Route::post('/documents/upload', [StudentController::class, 'upload'])->name('documents.upload');
     });
 
     // Supervisor Routes

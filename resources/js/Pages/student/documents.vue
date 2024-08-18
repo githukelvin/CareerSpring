@@ -1,7 +1,9 @@
 <script setup>
-import { Head } from "@inertiajs/vue3";
+import { Head, useForm } from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import ButtonSubmit from "@/Components/ButtonSubmit.vue";
+import FlashMessageComponent from "@/Components/FlashMessageComponent.vue";
+
 const routeobject = [
     {
         Name: "Dashboard",
@@ -34,6 +36,27 @@ const routeobject = [
         icon: "LogoIcon",
     },
 ];
+const form = useForm({
+    recommendation_letter: null,
+    final_report: null,
+});
+
+const handleFileUpload = (event, fieldName) => {
+    form[fieldName] = event.target.files[0];
+};
+
+const submitForm = () => {
+    form.post(route("student.documents.upload"), {
+        onSuccess: () => {
+            // Show a success message using Inertia's flash messages
+            Inertia.reload({ only: ["flash"], preserveScroll: true });
+            alert("Files have been successfully uploaded.");
+        },
+        onError: () => {
+            alert("There was an error uploading the files.");
+        },
+    });
+};
 </script>
 
 <template>
@@ -43,13 +66,16 @@ const routeobject = [
             <h1 class="font-[semibold] text-black-200 text-[1.25em] pb-4">
                 Documents
             </h1>
+            <FlashMessageComponent />
 
             <div class="bg-white p-6">
                 <h1 class="font-[medium] text-base text-black-200 py-4">
                     Weekly industrial Attachment Records
                 </h1>
-
-                <form action="" method="post">
+                <form
+                    enctype="multipart/form-data"
+                    @submit.prevent="submitForm"
+                >
                     <div class="mb-3">
                         <div>
                             <label
@@ -58,9 +84,16 @@ const routeobject = [
                                 >Recommendation Letter:</label
                             >
                             <input
-                                class="block w-7/12 file:text-base file:text-neutral-900 file:px-5 file:h-full file:bg-neutral-300 text-sm file:border-0 h-[50px] text-gray-900 border border-neutral-500 font-[medium] text-[0.875em] file:mr-6 text-neutral-700 cursor-pointer focus:outline-none"
                                 id="file_input"
+                                accept=".pdf,.doc,.docx"
+                                class="block w-7/12 file:text-base file:text-neutral-900 file:px-5 file:h-full file:bg-neutral-300 text-sm file:border-0 h-[50px] text-gray-900 border border-neutral-500 font-[medium] text-[0.875em] file:mr-6 text-neutral-700 cursor-pointer focus:outline-none"
                                 type="file"
+                                @change="
+                                    handleFileUpload(
+                                        $event,
+                                        'recommendation_letter',
+                                    )
+                                "
                             />
                         </div>
                         <div class="mt-4">
@@ -70,18 +103,22 @@ const routeobject = [
                                 >Final Report:</label
                             >
                             <input
-                                class="block w-7/12 file:h-full file:text-base file:bg-neutral-300 file:text-neutral-900 file:px-5 text-sm file:border-0 h-[50px] text-gray-900 border border-neutral-500 font-[medium] text-[0.875em] file:mr-6 text-neutral-700 cursor-pointer focus:outline-none"
                                 id="file_input"
+                                accept=".pdf,.doc,.docx"
+                                class="block w-7/12 file:h-full file:text-base file:bg-neutral-300 file:text-neutral-900 file:px-5 text-sm file:border-0 h-[50px] text-gray-900 border border-neutral-500 font-[medium] text-[0.875em] file:mr-6 text-neutral-700 cursor-pointer focus:outline-none"
                                 type="file"
+                                @change="
+                                    handleFileUpload($event, 'final_report')
+                                "
                             />
                         </div>
                     </div>
 
-                    <ButtonSubmit> Submit Documents </ButtonSubmit>
+                    <ButtonSubmit> Submit Documents</ButtonSubmit>
                 </form>
             </div>
         </div>
     </AuthenticatedLayout>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

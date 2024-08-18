@@ -64,6 +64,42 @@ class StudentController extends Controller
         return redirect()->back()->with('success', 'Readiness for assessment marked successfully.');
     }
 
+    public function assess(): \Inertia\Response
+    {
+        $user_id = Auth::id();
+
+        $student = Student::where('user_id', $user_id)->first();
+        return Inertia::render('student/assessment', [
+            'student' => $student
+        ]);
+    }
+
+    public function upload(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'recommendation_letter' => ['required', File::types(['pdf', 'doc', 'docx'])->min('1kb')->max('10mb')],
+            'final_report' => ['required', File::types(['pdf', 'doc', 'docx'])->min('1kb')->max('10mb')],
+        ]);
+        $student = Student::where(['user_id' => Auth::id()])->first();
+        $user = Auth::user();
+        // Customize the file names
+        $recommendationLetterName = 'recommendation_letter_' . $user->name . '.' . $request->file('recommendation_letter')->getClientOriginalExtension();
+        $finalReportName = 'final_report_' . $user->name . '.' . $request->file('final_report')->getClientOriginalExtension();
+
+        // Store the files
+        $recommendationLetterPath = $request->file('recommendation_letter')->storeAs('documents', $recommendationLetterName);
+        $finalReportPath = $request->file('final_report')->storeAs('documents', $finalReportName);
+
+        $student->recommendation_letter = $recommendationLetterPath;
+        $student->final_report = $finalReportPath;
+        $student->save();
+
+        // Proceed with further logic, e.g., saving paths to the database
+
+        return redirect()->back()->with('success', 'Files have been successfully uploaded.');
+    }
+
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         // Validate the request data
@@ -88,28 +124,6 @@ class StudentController extends Controller
         $student = Student::create(array_merge(['user_id' => Auth::id()], ['progress_level' => 5], $validatedData));
 
         return redirect()->back()->with('success', 'Student information has been successfully saved.');
-    }
-
-
-    public function assess(): \Inertia\Response
-    {
-        $user_id = Auth::id();
-
-        $student = Student::where('user_id', $user_id)->first();
-        return Inertia::render('student/assessment', [
-            'student' => $student
-        ]);
-    }
-
-    public function upload(Request $request)
-    {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'recommendation_letter' => ['required', File::types(['pdf', 'doc', 'docx'])->min('1kb')->max('10mb')],
-            'final_report' => ['required', File::types(['pdf', 'doc', 'docx'])->min('1kb')->max('10mb')],
-        ]);
-
-
     }
 
 }

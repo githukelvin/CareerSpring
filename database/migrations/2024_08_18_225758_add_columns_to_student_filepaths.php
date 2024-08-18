@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,8 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default(UserRole::Student->value)->before('created_at');
+        Schema::table('students', function (Blueprint $table) {
+            $table->string('final_report')->nullable()->before('created_at');
+            $table->string('recommendation_letter')->nullable()->before('created_at');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn(['final_report', 'recommendation_letter']);
         });
     }
 };
