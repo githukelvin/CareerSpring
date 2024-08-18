@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    nginx
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -32,12 +33,15 @@ RUN composer install
 # Copy existing application directory permissions
 COPY --chown=www-data:www-data . /var/www/html
 
-# Change current user to www-data
-USER www-data
+# Copy Nginx configuration
+COPY nginx.conf /etc/nginx/sites-available/default
 
-# Expose port 80 and create a volume for /var/www
+# Copy the start script into the container
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+
+# Expose port 80
 EXPOSE 80
-VOLUME /var/www
 
-# Start PHP-FPM server
-CMD ["php-fpm"]
+# Set the start script as the entry point
+ENTRYPOINT ["/usr/local/bin/start.sh"]
