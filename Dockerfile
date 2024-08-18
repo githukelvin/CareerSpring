@@ -1,5 +1,4 @@
-# Use the official PHP 8.3 image as the base
-FROM php:8.3-fpm
+FROM php:8.3-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -9,8 +8,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip \
-    nginx
+    unzip
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -28,13 +26,16 @@ WORKDIR /var/www/html
 COPY . /var/www/html
 
 # Install application dependencies
-RUN composer install
+RUN composer install --no-interaction --no-dev --prefer-dist
 
 # Copy existing application directory permissions
 COPY --chown=www-data:www-data . /var/www/html
 
-# Copy Nginx configuration
-COPY nginx.conf /etc/nginx/sites-available/default
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
+
+# Update Apache configuration
+RUN sed -i 's/\/var\/www\/html/\/var\/www\/html\/public/g' /etc/apache2/sites-available/000-default.conf
 
 # Copy the start script into the container
 COPY start.sh /usr/local/bin/start.sh
@@ -44,4 +45,4 @@ RUN chmod +x /usr/local/bin/start.sh
 EXPOSE 80
 
 # Set the start script as the entry point
-ENTRYPOINT ["/usr/local/bin/start.sh"]
+CMD ["/usr/local/bin/start.sh"]

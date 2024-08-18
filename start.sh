@@ -1,16 +1,10 @@
 #!/bin/bash
 
-# Generate the application key
-php artisan key:generate --force
+# Generate the application key if not set
+php artisan key:generate --force --show
 
 # Run database migrations
 php artisan migrate --force
 
-# Seed the database
-php artisan db:seed --force
-
-# Start PHP-FPM
-php-fpm -D
-
-# Start Nginx
-nginx -g 'daemon off;'
+# Start Apache in foreground
+apache2-foreground
