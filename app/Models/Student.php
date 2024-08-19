@@ -13,6 +13,7 @@ class Student extends Model
 
     protected $primaryKey = 'student_id';
 
+
     public function attachmentPlace()
     {
         return $this->belongsTo(AttachmentPlace::class);

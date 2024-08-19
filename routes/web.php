@@ -48,7 +48,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Coordinator Routes
     Route::prefix('coordinator')->name('coordinator.')->group(function () {
-        Route::get('/', fn() => Inertia::render('coordinator/index'))->name('index');
+        Route::get('/', [\App\Http\Controllers\CoordinatorController::class, 'index'])->name('index');
         Route::get('/analytics', fn() => Inertia::render('coordinator/Analytics'))->name('analytics');
         Route::get('/allocation', fn() => Inertia::render('coordinator/Allocation'))->name('allocation');
         Route::get('/settings', fn() => Inertia::render('coordinator/Settings'))->name('settings');

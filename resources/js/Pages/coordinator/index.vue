@@ -40,13 +40,14 @@
                     <PendingTasksIcon />
                 </div>
             </div>
+            {{ monthlyCounts }}
         </div>
     </AuthenticatedLayout>
 </template>
 
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, usePage } from "@inertiajs/vue3";
 import StudentIcon from "@/Components/icons/StudentIcon.vue";
 import TickIcon from "@/Components/icons/TickIcon.vue";
 import PendingAllocationIcon from "@/Components/icons/PendingAllocationIcon.vue";
@@ -79,6 +80,7 @@ const routeobject = [
         icon: "LogoIcon",
     },
 ];
+const monthlyCounts = usePage().props.monthlyCounts;
 </script>
 
 <style lang="scss" scoped></style>
