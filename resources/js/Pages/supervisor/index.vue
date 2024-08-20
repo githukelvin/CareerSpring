@@ -17,7 +17,9 @@
                 <div class="bg-white p-5 flex flex-row justify-between">
                     <div class="">
                         <p class="font-[medium] text-sm">Assessment Visits</p>
-                        <h1 class="font-[bold] text-[2em]">100</h1>
+                        <h1 class="font-[bold] text-[2em]">
+                            {{ assesmentcount }}
+                        </h1>
                     </div>
                     <AssesmentVisits />
                 </div>
@@ -25,11 +27,14 @@
                 <div class="bg-white p-5 flex flex-row justify-between">
                     <div class="">
                         <p class="font-[medium] text-sm">Pending Tasks</p>
-                        <h1 class="font-[bold] text-[2em]">5</h1>
+                        <h1 class="font-[bold] text-[2em]">
+                            {{ pendingTaskscount }}
+                        </h1>
                     </div>
                     <PendingTasksIcon />
                 </div>
             </div>
+            {{ pendingTasks }}
         </div>
     </AuthenticatedLayout>
 </template>
@@ -54,11 +59,7 @@ const routeobject = [
         routeName: "supervisor/allocatedStudents",
         icon: "LogoIcon",
     },
-    {
-        Name: "Assessment Visit",
-        routeName: "supervisor/assessmentVisits",
-        icon: "LogoIcon",
-    },
+
     {
         Name: "Pending Tasks",
         routeName: "supervisor/pendingTasks",
@@ -71,6 +72,9 @@ const routeobject = [
     },
 ];
 const studentCount = usePage().props.studentCount;
+const pendingTasks = usePage().props.pendingTasks;
+const assesmentcount = usePage().props.assesmentcount;
+const pendingTaskscount = usePage().props.pendingTaskscount;
 </script>
 
 <style lang="scss" scoped></style>

@@ -4,6 +4,7 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import { Inertia } from "@inertiajs/inertia";
 
 const form = useForm({
     organization_name: "",
@@ -20,8 +21,12 @@ const form = useForm({
     signature: "",
 });
 const submit = () => {
+    // alert(JSON.stringify(form));
     form.post(route("student.attachment_place"), {
         onFinish: () => form.reset(),
+        onSuccess: () => {
+            Inertia.reload();
+        },
     });
 };
 </script>

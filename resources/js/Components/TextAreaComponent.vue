@@ -14,15 +14,15 @@ const prop = defineProps({
 
 <template>
     <textarea
-        name=""
-        v-model="model"
-        ref="textarea"
         id=""
-        cols="30"
-        class="w-full"
-        rows="5"
+        ref="textarea"
+        v-model="model"
         :placeholder="placeholder"
+        class="w-full"
+        cols="30"
+        name=""
+        rows="5"
     ></textarea>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

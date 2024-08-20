@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->boolean('is_ready_for_assessment')->default(false);
             $table->enum('approval_status', ['Pending', 'Approved', 'Rejected', 'Ready'])->default('Pending');
             $table->string('home_address');
-            $table->boolean('approved_director')->default(false);
+            $table->boolean('approved_director')->default(true);
             $table->string('tel_no');
             $table->integer('progress_level');
             $table->string('next_of_kin_name');

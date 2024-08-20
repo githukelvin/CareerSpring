@@ -1,6 +1,26 @@
 <script setup>
 import ButtonSubmit from "@/Components/ButtonSubmit.vue";
 import ButtonAll from "@/Components/ButtonAll.vue";
+import { Inertia } from "@inertiajs/inertia";
+
+const markCompleted = async (student_id) => {
+    confirm.value = true;
+    try {
+        const response = await axios.get(
+            route("supervisor.markComplete", student_id),
+        );
+        alert(response.data.message);
+        Inertia.reload();
+    } catch (error) {
+        console.error("Error fetching allocation data:", error);
+    }
+};
+
+const props = defineProps({
+    student_id: {
+        type: Number,
+    },
+});
 </script>
 
 <template>
@@ -14,7 +34,9 @@ import ButtonAll from "@/Components/ButtonAll.vue";
 
         <!--        action:group-->
         <div class="flex flex-row mt-5 justify-between">
-            <button-submit> Confirm</button-submit>
+            <button-submit @click="markCompleted(student_id)">
+                Confirm</button-submit
+            >
 
             <button-all>Cancel</button-all>
         </div>

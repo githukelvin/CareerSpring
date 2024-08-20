@@ -17,6 +17,7 @@ class AttachmentPlaceController extends Controller
             'physical_address' => 'required|string|max:255',
             'postal_address' => 'required|string|max:255',
             'tel_no' => 'required|numeric|digits_between:10,15',
+            'head_tel' => 'required|numeric|digits_between:10,15',
             'organization_email' => 'required|email|max:255',
             'department_name' => 'required|string|max:255',
             'head_name' => 'required|string|max:255',

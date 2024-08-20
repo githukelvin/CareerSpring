@@ -84,8 +84,8 @@ const fetchData = async (student_id) => {
                             class="px-6 py-4 text-start text-sm text-primary-500 font-[regular]"
                         >
                             <!--                             fetchData(
-                                                    assessment.students.student_id,
-                                                ),-->
+                                        assessment.students.student_id,
+                                    ),-->
                             <button
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                 @click="

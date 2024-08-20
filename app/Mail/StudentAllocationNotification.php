@@ -19,11 +19,10 @@ class StudentAllocationNotification extends Mailable
     public $lecturer;
     public $oldLecturer;
 
-    public function __construct($student, $lecturer, $oldLecturer)
+    public function __construct($student, $lecturer)
     {
         $this->student = $student;
         $this->lecturer = $lecturer;
-        $this->lecturer = $oldLecturer;
     }
 
     /**

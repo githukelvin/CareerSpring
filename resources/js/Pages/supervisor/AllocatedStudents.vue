@@ -2,7 +2,7 @@
     <Head title="Assessments Visits" />
     <AuthenticatedLayout :nav-links="routeobject">
         <div class="px-8 pt-4">
-            <h1 class="font-[semibold] text-xl">Dashboard</h1>
+            <h1 class="font-[semibold] text-xl">Allocated Students</h1>
             <div>
                 <div class="flex flex-row justify-between">
                     <div>
@@ -75,30 +75,49 @@
                                             </thead>
                                             <tbody>
                                                 <tr
+                                                    v-for="assess in assessments"
+                                                    :key="assess.id"
                                                     class="odd:bg-white even:bg-neutral-400 hover:bg-gray-100 dark:even:bg-neutral-100 dark:hover:bg-neutral-400"
                                                 >
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-[regular] text-gray-800 text-black-200"
                                                     >
-                                                        John Brown
+                                                        {{
+                                                            assess.students.user
+                                                                .name
+                                                        }}
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
                                                     >
-                                                        45
+                                                        {{
+                                                            assess.students
+                                                                .training_institution
+                                                                .department_name
+                                                        }}
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
                                                     >
-                                                        01-jan-2024
+                                                        {{
+                                                            assess.students
+                                                                .attachment
+                                                                .start_date
+                                                        }}
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
                                                     >
-                                                        10-mar-2024
+                                                        {{
+                                                            assess.students
+                                                                .attachment
+                                                                .end_date
+                                                        }}
                                                     </td>
                                                     <StatusComponent
-                                                        status="Not Accessed"
+                                                        :status="
+                                                            assess.assessment_status
+                                                        "
                                                     />
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap flex flex-row gap-7 text-end text-sm font-[regular]"
@@ -106,117 +125,13 @@
                                                         <button
                                                             class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-bluish hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
                                                             type="button"
-                                                        >
-                                                            View Details
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="odd:bg-white even:bg-neutral-400 hover:bg-gray-100 dark:even:bg-neutral-100 dark:hover:bg-neutral-400"
-                                                >
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm font-[regular] text-gray-800 text-black-200"
-                                                    >
-                                                        John Brown
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        45
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        01-jan-2024
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        10-mar-2024
-                                                    </td>
-                                                    <StatusComponent
-                                                        status="Completed"
-                                                    />
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap flex flex-row gap-7 text-end text-sm font-[regular]"
-                                                    >
-                                                        <button
-                                                            class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-bluish hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
-                                                            type="button"
-                                                        >
-                                                            View Details
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="odd:bg-white even:bg-neutral-400 hover:bg-gray-100 dark:even:bg-neutral-100 dark:hover:bg-neutral-400"
-                                                >
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm font-[regular] text-gray-800 text-black-200"
-                                                    >
-                                                        John Brown
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        45
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        01-jan-2024
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        10-mar-2024
-                                                    </td>
-                                                    <StatusComponent
-                                                        status="pending"
-                                                    />
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap flex flex-row gap-7 text-end text-sm font-[regular]"
-                                                    >
-                                                        <button
-                                                            class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-bluish hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
-                                                            type="button"
-                                                        >
-                                                            View Details
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr
-                                                    class="odd:bg-white even:bg-neutral-400 hover:bg-gray-100 dark:even:bg-neutral-100 dark:hover:bg-neutral-400"
-                                                >
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm font-[regular] text-gray-800 text-black-200"
-                                                    >
-                                                        John Brown
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        45
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        01-jan-2024
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-black-200"
-                                                    >
-                                                        10-mar-2024
-                                                    </td>
-                                                    <StatusComponent
-                                                        status="Not Accessed"
-                                                    />
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap flex flex-row gap-7 text-end text-sm font-[regular]"
-                                                    >
-                                                        <button
-                                                            class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-bluish hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
-                                                            type="button"
+                                                            @click="
+                                                                viewDetails(
+                                                                    assess
+                                                                        .students
+                                                                        .student_id,
+                                                                )
+                                                            "
                                                         >
                                                             View Details
                                                         </button>
@@ -234,19 +149,22 @@
         </div>
     </AuthenticatedLayout>
     <div v-show="confirm" class="absolute w-svw modal inset-0">
-        <MarkAccessed @close-modal="confirm = !confirm" />
+        <MarkAccessed
+            :assessment="assessment"
+            @close-modal="confirm = !confirm"
+        />
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 
-const confirm = ref(true);
+const confirm = ref(false);
 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import StatusComponent from "@/Components/StatusComponent.vue";
 
-import { Head } from "@inertiajs/vue3";
+import { Head, usePage } from "@inertiajs/vue3";
 import AssessmentModal from "@/Components/AssessmentModal.vue";
 import MarkAccessed from "@/Components/MarkAccessed.vue";
 
@@ -261,11 +179,7 @@ const routeobject = [
         routeName: "/supervisor/allocatedStudents",
         icon: "LogoIcon",
     },
-    {
-        Name: "Assessment Visit",
-        routeName: "/supervisor/assessmentVisits",
-        icon: "LogoIcon",
-    },
+
     {
         Name: "Pending Tasks",
         routeName: "/supervisor/pendingTasks",
@@ -277,6 +191,20 @@ const routeobject = [
         icon: "LogoIcon",
     },
 ];
+const assessment = ref({});
+const viewDetails = async (student_id) => {
+    confirm.value = true;
+    try {
+        const response = await axios.get(
+            route("supervisor.viewdetails", student_id),
+        );
+        assessment.value = response.data;
+        console.log(assessment.value);
+    } catch (error) {
+        console.error("Error fetching allocation data:", error);
+    }
+};
+const assessments = usePage().props.assessments;
 </script>
 
 <style lang="scss" scoped></style>

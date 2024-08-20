@@ -24,7 +24,7 @@ class TrainingInstitutionFactory extends Factory
             'school_name' => $this->faker->company,
             'director_name' => $this->faker->name,
             'director_email' => $this->faker->email,
-            'department_name' => $this->faker->name,
+            'department_name' => $this->faker->randomElement(['CT', 'CCN', 'IT']),
             'chairperson_name' => $this->faker->name,
             'chairperson_tel' => $this->faker->phoneNumber,
         ];

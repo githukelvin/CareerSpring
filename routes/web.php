@@ -37,9 +37,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Supervisor Routes
     Route::prefix('supervisor')->name('supervisor.')->group(function () {
         Route::get('/', [LecturerController::class, 'index'])->name('index');
-        Route::get('/allocatedStudents', fn() => Inertia::render('supervisor/AllocatedStudents'))->name('allocatedStudents');
+        Route::get('/allocatedStudents', [LecturerController::class, 'allocated'])->name('allocatedStudents');
+        Route::get('/view_details/{id}', [LecturerController::class, 'viewDetails'])->name('viewdetails');
+        Route::get('/markComplete/{id}', [LecturerController::class, 'markComplete'])->name('markComplete');
         Route::get('/assessmentVisits', fn() => Inertia::render('supervisor/AssessmentVisits'))->name('assessmentVisits');
-        Route::get('/pendingTasks', fn() => Inertia::render('supervisor/PendingTasks'))->name('pendingTasks');
+        Route::get('/pendingTasks', [LecturerController::class, 'pendingTasks'])->name('pendingTasks');
+        Route::post('/assess/{id}', [LecturerController::class, 'updateAttachment'])->name('assess');
     });
 
     // Director Routes
