@@ -1,22 +1,44 @@
 <template>
     <div id="chart">
         <apexchart
-            type="bar"
-            height="350"
             :options="chartOptions"
             :series="series"
+            height="350"
+            type="bar"
         ></apexchart>
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import VueApexCharts from "vue3-apexcharts";
+import { usePage } from "@inertiajs/vue3";
+
+const monthlyCounts = usePage().props.monthlyCounts;
+
+for (let month = 1; month <= 12; month++) {
+    // Check if the current month is already in the data array
+    const existingMonth = monthlyCounts.find((item) => item.month === month);
+
+    // If the month is not found, add it with student_count 0
+    if (!existingMonth) {
+        monthlyCounts.push({ month: month, student_count: 0 });
+    }
+}
+
+// Sort the array by month to ensure the months are in order
+monthlyCounts.sort((a, b) => a.month - b.month);
+
+const chartData = [];
+
+monthlyCounts.forEach((item) => {
+    chartData.push(item.student_count);
+    // You can use the value of student_count here as needed
+});
 
 const series = ref([
     {
-        name: "Inflation",
-        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
+        name: "students",
+        data: chartData,
     },
 ]);
 
@@ -35,7 +57,7 @@ const chartOptions = ref({
     },
     dataLabels: {
         enabled: true,
-        formatter: (val) => `${val}%`,
+        formatter: (val) => `${val}`,
         offsetY: -20,
         style: {
             fontSize: "12px",
@@ -89,11 +111,11 @@ const chartOptions = ref({
         },
         labels: {
             show: false,
-            formatter: (val) => `${val}%`,
+            formatter: (val) => `${val}`,
         },
     },
     title: {
-        text: "Monthly Inflation in Argentina, 2002",
+        text: "Student Completion in each Month",
         floating: false,
         offsetY: 0,
         align: "center",

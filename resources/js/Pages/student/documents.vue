@@ -3,6 +3,7 @@ import { Head, useForm } from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import ButtonSubmit from "@/Components/ButtonSubmit.vue";
 import FlashMessageComponent from "@/Components/FlashMessageComponent.vue";
+import { Inertia } from "@inertiajs/inertia";
 
 const routeobject = [
     {

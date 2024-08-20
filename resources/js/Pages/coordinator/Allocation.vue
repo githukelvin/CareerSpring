@@ -7,6 +7,7 @@
             </h1>
             <p>Manage and allocate supervisors for students on attachment</p>
             <!--            div:assigned-->
+            <FlashMessageComponent />
             <div
                 v-show="success"
                 class="flex my-3 px-4 flex-row justify-between items-center py-4 bg-[rgb(172,207,189)]/70"
@@ -37,6 +38,7 @@
                     </select>
                 </div>
             </div>
+            <!--            {{ assessments[0].students.training_institution.department_name  }}-->
             <!-- div:end filter -->
             <div>
                 <div class="bg-primary-500 w-full py-4 mt-6 tabs">
@@ -60,12 +62,13 @@
                 <div>
                     <AllocatedSupervisor
                         v-if="activeTab === 'allocated'"
-                        :allocations="allocatedSupervisors"
+                        :allocations="assessments"
+                        @readiness-marked="handleReadinessMarked"
                         @cancel-click="confirm = !confirm"
                     />
                     <PendingAllocation
                         v-if="activeTab === 'pending'"
-                        :allocations="pendingAllocations"
+                        :pending-allocations="pendingAllocations"
                     />
                 </div>
                 <!--                End Tables-->
@@ -74,17 +77,30 @@
     </AuthenticatedLayout>
 
     <div v-show="confirm" class="absolute w-svw modal inset-0">
-        <ModalAllocateSupervisor @close-modal="confirm = !confirm" />
+        <ModalAllocateSupervisor
+            :allocations="modalData"
+            @close-modal="confirm = !confirm"
+        />
     </div>
 </template>
 
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, usePage } from "@inertiajs/vue3";
 import AllocatedSupervisor from "@/Pages/coordinator/partials/AllocatedSupervisor.vue";
 import PendingAllocation from "@/Pages/coordinator/partials/PendingAllocation.vue";
 import { ref } from "vue";
 import ModalAllocateSupervisor from "@/Pages/coordinator/partials/ModalAllocateSupervisor.vue";
+import FlashMessageComponent from "@/Components/FlashMessageComponent.vue";
+
+const lecturers = usePage().props.lecturers;
+const students = usePage().props.students;
+const assessments = usePage().props.assessments;
+
+const pendingAllocations = {
+    lecturers: lecturers,
+    students: students,
+};
 
 const confirm = ref(false);
 
@@ -117,6 +133,12 @@ const routeobject = [
 ];
 const activeTab = ref("allocated");
 const success = ref(false);
+
+const modalData = ref({});
+const handleReadinessMarked = (data) => {
+    modalData.value = data;
+    // console.log("Readiness marked with data:", data);
+};
 </script>
 
 <style scoped>

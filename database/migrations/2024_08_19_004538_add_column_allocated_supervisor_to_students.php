@@ -11,8 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('students', function (Blueprint $table) {
-            $table->string('final_report')->nullable()->after('next_of_kin_tel');
-            $table->string('recommendation_letter')->nullable()->after('next_of_kin_tel');
+            $table->boolean('allocated_supervisor')->after('is_ready_for_assessment')->default(false);
         });
     }
 
@@ -22,7 +21,7 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('students', function (Blueprint $table) {
-            $table->dropColumn(['final_report', 'recommendation_letter']);
+            //
         });
     }
 };

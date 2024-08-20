@@ -1,22 +1,44 @@
 <template>
     <div id="chart">
         <apexchart
-            type="line"
-            height="350"
             :options="chartOptions"
             :series="series"
+            height="350"
+            type="line"
         ></apexchart>
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import VueApexCharts from "vue3-apexcharts";
+import { usePage } from "@inertiajs/vue3";
+
+const monthlyCounts = usePage().props.monthlyCounts;
+
+for (let month = 1; month <= 12; month++) {
+    // Check if the current month is already in the data array
+    const existingMonth = monthlyCounts.find((item) => item.month === month);
+
+    // If the month is not found, add it with student_count 0
+    if (!existingMonth) {
+        monthlyCounts.push({ month: month, student_count: 0 });
+    }
+}
+
+// Sort the array by month to ensure the months are in order
+monthlyCounts.sort((a, b) => a.month - b.month);
+
+const chartData = [];
+
+monthlyCounts.forEach((item) => {
+    chartData.push(item.student_count);
+    // You can use the value of student_count here as needed
+});
 
 const series = ref([
     {
-        name: "Desktops",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 0, 1, 4],
+        name: "Students",
+        data: chartData,
     },
 ]);
 
@@ -35,7 +57,7 @@ const chartOptions = ref({
         curve: "straight",
     },
     title: {
-        text: "Product Trends by Month",
+        text: "Student Completion  trends  by month",
         align: "left",
     },
     grid: {

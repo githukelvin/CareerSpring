@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Lecturer extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = "lecturer_id";
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function assessments()
+    {
+        return $this->hasMany(Assessment::class, 'lecturer_id');
+    }
 }

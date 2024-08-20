@@ -3,13 +3,15 @@
     <AuthenticatedLayout :nav-links="routeobject">
         <div class="px-8 pt-4">
             <h1 class="font-[semibold] text-xl">Dashboard</h1>
-            <div class="grid grid-cols-4 gap-3 py-7">
+            <div class="grid grid-cols-3 gap-3 py-7">
                 <div class="bg-white p-5 flex flex-row justify-between">
                     <div class="">
                         <p class="font-[medium] text-sm">
                             Total Students on Attachments
                         </p>
-                        <h1 class="font-[bold] text-[2em]">115</h1>
+                        <h1 class="font-[bold] text-[2em]">
+                            {{ OnAttachment }}
+                        </h1>
                     </div>
                     <StudentIcon />
                 </div>
@@ -19,7 +21,9 @@
                         <p class="font-[medium] text-sm">
                             Total Completed Attachments
                         </p>
-                        <h1 class="font-[bold] text-[2em]">100</h1>
+                        <h1 class="font-[bold] text-[2em]">
+                            {{ StudentsCompleted }}
+                        </h1>
                     </div>
                     <TickIcon />
                 </div>
@@ -27,20 +31,13 @@
                 <div class="bg-white p-5 flex flex-row justify-between">
                     <div class="">
                         <p class="font-[medium] text-sm">Pending Allocations</p>
-                        <h1 class="font-[bold] text-[2em]">10</h1>
+                        <h1 class="font-[bold] text-[2em]">
+                            {{ PendingAllocation }}
+                        </h1>
                     </div>
                     <PendingAllocationIcon />
                 </div>
-
-                <div class="bg-white p-5 flex flex-row justify-between">
-                    <div class="">
-                        <p class="font-[medium] text-sm">Pending Tasks</p>
-                        <h1 class="font-[bold] text-[2em]">5</h1>
-                    </div>
-                    <PendingTasksIcon />
-                </div>
             </div>
-            {{ monthlyCounts }}
         </div>
     </AuthenticatedLayout>
 </template>
@@ -80,7 +77,10 @@ const routeobject = [
         icon: "LogoIcon",
     },
 ];
-const monthlyCounts = usePage().props.monthlyCounts;
+const assessments = usePage().props.assessments;
+const StudentsCompleted = usePage().props.StudentsCompleted;
+const PendingAllocation = usePage().props.PendingAllocation;
+const OnAttachment = usePage().props.OnAttachment;
 </script>
 
 <style lang="scss" scoped></style>

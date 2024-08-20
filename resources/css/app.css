@@ -15,12 +15,13 @@
         background-position: center center;
         background-size: cover;
     }
+
     .centermodal {
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        margin-inline: auto;
+        top: 15em;
     }
 }
+
 @layer base {
     @font-face {
         font-display: swap;
@@ -73,10 +74,10 @@
 
 .header {
     background-image: linear-gradient(
-            rgba(16, 16, 16, 0.65),
-            rgba(16, 16, 16, 0.65)
-        ),
-        url("../images/bg-hero.png");
+        rgba(16, 16, 16, 0.65),
+        rgba(16, 16, 16, 0.65)
+    ),
+    url("../images/bg-hero.png");
     background-repeat: no-repeat;
     background-size: cover;
     /*background-position: top;*/

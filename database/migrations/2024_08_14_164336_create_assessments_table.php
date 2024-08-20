@@ -14,9 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('student_id')->constrained('students', 'student_id')->cascadeOnDelete();
             $table->foreignId('lecturer_id')->constrained('lecturers', 'lecturer_id')->cascadeOnDelete();
-            $table->date('day_assessed');
-            $table->text('feedback');
-            $table->string('performance');
+            $table->date('day_assessed')->nullable();
+            $table->text('feedback')->nullable();
+            $table->string('performance')->nullable();
+            $table->unique(['student_id']);
             $table->timestamps();
         });
     }

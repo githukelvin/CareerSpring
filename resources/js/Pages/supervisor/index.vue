@@ -7,7 +7,9 @@
                 <div class="bg-white p-5 flex flex-row justify-between">
                     <div class="">
                         <p class="font-[medium] text-sm">Allocated Students</p>
-                        <h1 class="font-[bold] text-[2em]">115</h1>
+                        <h1 class="font-[bold] text-[2em]">
+                            {{ studentCount }}
+                        </h1>
                     </div>
                     <StudentIcon />
                 </div>
@@ -34,7 +36,7 @@
 
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, usePage } from "@inertiajs/vue3";
 import StudentIcon from "@/Components/icons/StudentIcon.vue";
 import TickIcon from "@/Components/icons/TickIcon.vue";
 import PendingAllocationIcon from "@/Components/icons/PendingAllocationIcon.vue";
@@ -68,6 +70,7 @@ const routeobject = [
         icon: "LogoIcon",
     },
 ];
+const studentCount = usePage().props.studentCount;
 </script>
 
 <style lang="scss" scoped></style>

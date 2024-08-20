@@ -28,6 +28,7 @@ class AttachmentPlaceFactory extends Factory
             'head_name' => $this->faker->name,
             'supervisor_name' => $this->faker->name,
             'supervisor_tel' => $this->faker->phoneNumber,
+            'head_tel' => $this->faker->phoneNumber,
             'designation' => $this->faker->jobTitle(),
             'signature' => $this->faker->name,
         ];

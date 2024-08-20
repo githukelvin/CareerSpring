@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             LecturerSeeder::class,
             TrainingInstitutionSeeder::class,
             AttachmentPlaceSeeder::class,
-            AssessmentSeeder::class,
+//            AssessmentSeeder::class,
 //            WeeklyLogSeeder::class,
             AttachmentSeeder::class,
         ]);

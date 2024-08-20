@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AllocationController;
 use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\AttachmentPlaceController;
+use App\Http\Controllers\CoordinatorController;
+use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TrainingInstitutionController;
@@ -33,7 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Supervisor Routes
     Route::prefix('supervisor')->name('supervisor.')->group(function () {
-        Route::get('/', fn() => Inertia::render('supervisor/index'))->name('index');
+        Route::get('/', [LecturerController::class, 'index'])->name('index');
         Route::get('/allocatedStudents', fn() => Inertia::render('supervisor/AllocatedStudents'))->name('allocatedStudents');
         Route::get('/assessmentVisits', fn() => Inertia::render('supervisor/AssessmentVisits'))->name('assessmentVisits');
         Route::get('/pendingTasks', fn() => Inertia::render('supervisor/PendingTasks'))->name('pendingTasks');
@@ -48,9 +51,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Coordinator Routes
     Route::prefix('coordinator')->name('coordinator.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\CoordinatorController::class, 'index'])->name('index');
-        Route::get('/analytics', fn() => Inertia::render('coordinator/Analytics'))->name('analytics');
-        Route::get('/allocation', fn() => Inertia::render('coordinator/Allocation'))->name('allocation');
+        Route::get('/', [CoordinatorController::class, 'index'])->name('index');
+        Route::post('/allocate', [AllocationController::class, 'allocate'])->name('allocate');
+        Route::get('/reallocate/{id}', [AllocationController::class, 'reallocate'])->name('reallocate');
+        Route::get('/analytics', [CoordinatorController::class, 'analytics'])->name('analytics');
+        Route::get('/allocation', [CoordinatorController::class, 'getAllSupervisors'])->name('allocation');
         Route::get('/settings', fn() => Inertia::render('coordinator/Settings'))->name('settings');
     });
 });
